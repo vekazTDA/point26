@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /netlify-forms.html
+
+Sitemap: https://point26cap.com/sitemap.xml

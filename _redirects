@@ -1,0 +1,14 @@
+# Old .dc.html paths -> clean URLs (301, so any shared links keep working)
+/Point26%20Home.dc.html            /                 301
+/Point26%20How%20It%20Works.dc.html /how-it-works    301
+/Point26%20About%20Us.dc.html      /about            301
+/Point26%20ISO%20Resources.dc.html /iso-resources    301
+/Point26%20Contact.dc.html         /contact          301
+# friendly aliases
+/how-it-works.html   /how-it-works    301
+/about.html          /about           301
+/about-us            /about           301
+/iso-resources.html  /iso-resources   301
+/iso                 /iso-resources   301
+/contact.html        /contact         301
+/contact-us          /contact         301

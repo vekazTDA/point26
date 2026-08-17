@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="canonical" href="https://point26cap.com/iso-resources">
+<meta property="og:url" content="https://point26cap.com/iso-resources">
+<link rel="icon" type="image/svg+xml" href="assets/mark-dark.svg">
+<link rel="apple-touch-icon" href="assets/mark-dark.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"ISO Resources","url":"https://point26cap.com/iso-resources","description":"Join the Point26 Capital ISO network. Top-tier compensation including payouts on renewals and approvals, dedicated partner support, and same-day approvals.","isPartOf":{"@id":"https://point26cap.com/#site"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"ISO Resources","item":"https://point26cap.com/iso-resources"}]}]}</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+<title>ISO Resources &amp; Partner Program | Point26 Capital</title>
+<meta name="description" content="Join the Point26 Capital ISO network. Refer clients to revenue-based funding that closes in 24 hours and earn top-tier compensation on every deal.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ISO Partner Program | Point26 Capital">
+<meta property="og:description" content="Fast funding. Dedicated support. Same day approval. Apply to join the Point26 ISO network.">
+<meta property="og:image" content="https://point26cap.com/assets/handshake-p26.png">
+<meta name="twitter:image" content="https://point26cap.com/assets/handshake-p26.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,sans-serif;background:#010101;}
+  ::selection{background:#01C4CF;color:#00181c;}
+  a{color:#01C4CF;}
+  a:hover{color:#00F1FF;}
+  input::placeholder{color:rgba(255,255,255,.38);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(34px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes whyRise{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:none;}}
+  @keyframes orbBreath{0%,100%{transform:scale(.93);opacity:.62;}50%{transform:scale(1.1);opacity:1;}}
+  @keyframes orbPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+  @keyframes doneFade{from{opacity:0;transform:scale(.96);}to{opacity:1;transform:scale(1);}}
+  @keyframes swipeNudge{0%,100%{transform:translateX(0);}50%{transform:translateX(7px);}}
+  /* hero load-in: driven by JS toggling html.hero-loaded (CSS entrance anims stick at from-frame in this runtime) */
+  [data-load]{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+  [data-why-reveal]{animation:whyRise .7s cubic-bezier(.16,1,.3,1) both;animation-timeline:view();animation-range:entry 2% cover 32%;}
+  @keyframes navDrop{from{opacity:0;transform:translateX(-50%) translateY(-70px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+  @keyframes glowBreath{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1);}50%{opacity:.85;transform:translate(-50%,-50%) scale(1.1);}}
+  @keyframes tagFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+  [data-nav-pill]{background:rgba(11,52,54,.4);}
+  [data-nav-ink]{color:#ffffff;}
+  [data-nav-btn]{border-color:rgba(255,255,255,.9);}
+  @media (max-width:960px){
+    [data-nav]{left:0 !important;right:0 !important;width:100% !important;transform:none !important;top:0 !important;gap:0 !important;padding:30px 18px 0 !important;box-sizing:border-box !important;justify-content:space-between !important;align-items:flex-start !important;}
+    [data-nav] > a:first-child{padding:13px 16px !important;}
+    [data-nav-menu]{display:none !important;}
+    [data-nav]{z-index:80 !important;}
+    [data-nav-burger]{display:flex !important;height:46px !important;}
+    [data-navmenu]{display:flex !important;}
+    [data-navmenu].open{opacity:1 !important;transform:translateY(0) !important;pointer-events:auto !important;}
+    [data-nav-burger] > span > span{transition:transform .3s ease, opacity .25s ease !important;}
+    .menu-open [data-nav-burger] > span > span:nth-child(1){transform:translateY(5.7px) rotate(45deg) !important;}
+    .menu-open [data-nav-burger] > span > span:nth-child(2){opacity:0 !important;}
+    .menu-open [data-nav-burger] > span > span:nth-child(3){transform:translateY(-5.7px) rotate(-45deg) !important;}
+    [data-hero-grid]{grid-template-columns:1fr !important;}
+    [data-benefits-grid]{grid-template-columns:1fr !important;grid-template-areas:"hc" "fa" "ds" "fp" "mm" "rt" !important;}
+    [data-benefits-wrap]{grid-template-columns:1fr !important;gap:32px !important;}
+    [data-why-grid]{grid-template-columns:1fr !important;grid-template-areas:"sf" "ab" "bi" "fl" !important;}
+    [data-proc-grid]{grid-template-columns:1fr !important;}
+  }
+  @media (max-width:760px){
+    #iso-application{padding:120px 20px 60px !important;}
+    [data-hero-copy]{padding-top:0 !important;}
+    [data-hero-copy] > p:first-child{font-size:20px !important;}
+    [data-hero-copy] p{max-width:100% !important;}
+    [data-h2]{font-size:30px !important;line-height:1.2 !important;}
+    [data-support]{grid-template-columns:1fr !important;justify-items:start !important;}
+    [data-form-card]{padding:30px 22px 36px !important;}
+    [data-form-card] > h2{font-size:24px !important;}
+    [data-form-fields-row]{flex-direction:column !important;gap:34px !important;}
+    [data-form-fullonly]{display:none !important;}
+    [data-form-full]{display:none !important;}
+    [data-form-simple]{display:flex !important;}
+    [data-support]{display:none !important;}
+    [data-support-label]{display:none !important;}
+    [data-proc-sec]{height:280vh !important;}
+    [data-proc-stage]{padding:0 22px !important;}
+    [data-proc-grid3]{display:block !important;position:relative !important;min-height:250px !important;padding-top:0 !important;}
+    [data-proc-grid3] > [data-proc-step]{position:absolute !important;top:0 !important;left:0 !important;right:0 !important;transition:opacity .5s ease, transform .5s ease !important;}
+    [data-proc-icon]{display:none !important;}
+    section[data-screen-label="Benefits"]{padding:70px 20px 84px !important;}
+    [data-benefits-card]{border-radius:22px !important;}
+    [data-benefits-brand]{min-height:auto !important;padding:34px 26px !important;}
+    [data-benefits-list]{display:flex !important;overflow-x:auto !important;scroll-snap-type:x mandatory !important;scroll-padding:18px !important;gap:16px !important;padding:20px 18px 24px !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+    [data-benefits-list]::-webkit-scrollbar{display:none !important;}
+    [data-benefits-list] > div{flex:0 0 80% !important;scroll-snap-align:center !important;padding:28px 24px !important;min-height:150px !important;justify-content:center !important;gap:10px !important;}
+    [data-benefits-brand]{gap:32px !important;}
+    [data-brand-desk]{white-space:nowrap !important;font-size:12px !important;margin-left:12px !important;}
+    [data-benefits-card]{background:#0a2024 !important;}
+    [data-swipe-hint]{display:flex !important;}
+  }
+  @media (max-width:960px){
+    [data-benefits-card]{grid-template-columns:1fr !important;}
+    [data-benefits-list]{grid-template-columns:1fr !important;}
+  }
+  @media (max-width:700px){
+    #footer{ padding-top:0 !important; }
+    [data-foot-track]{ height:auto !important; }
+    [data-foot-stage]{ position:static !important; height:auto !important; justify-content:flex-start !important; padding:30px 0 0 !important; gap:36px !important; }
+    [data-email-block]{ opacity:1 !important; }
+    [data-email-block] h3{ font-size:28px !important; }
+    [data-banner-block]{ width:100% !important; max-width:none !important; padding:0 !important; }
+    [data-banner-block] > div{ border-radius:0 !important; height:560px !important; min-height:0 !important; }
+    [data-foot-logo]{ gap:16px !important; padding:24px 24px 40px !important; }
+    [data-foot-logo] img:first-child{ height:74px !important; }
+    [data-foot-logo] img:last-child{ height:52px !important; }
+    [data-foot-links]{ flex-direction:column !important; justify-content:center !important; gap:22px !important; padding:30px 24px 38px !important; }
+  }
+  @media (max-width:1100px){
+    #footer{ padding-top:0 !important; }
+    [data-foot-track]{ height:auto !important; }
+    [data-foot-stage]{ position:static !important; height:auto !important; justify-content:flex-start !important; padding:40px 0 0 !important; gap:40px !important; }
+    [data-email-block]{ opacity:1 !important; }
+    [data-banner-block]{ width:100% !important; max-width:none !important; padding:0 !important; }
+    [data-banner-block] > div{ border-radius:0 !important; height:auto !important; min-height:min(78vw,520px) !important; }
+    [data-banner-block] > div > div:last-child{ position:static !important; padding:26vw 6% 44px !important; }
+    [data-banner-block] h2{ font-size:clamp(32px,9vw,64px) !important; }
+    [data-banner-block] p{ opacity:1 !important; }
+    [data-email-row]{ padding:6px !important; gap:6px !important; }
+    [data-email-row] input{ min-width:0 !important; font-size:15px !important; }
+    [data-email-row] button{ padding:11px 16px !important; font-size:14px !important; white-space:nowrap !important; }
+  }
+  /* ios-harden */
+  @media (max-width: 820px){
+    [style*="blur("]{ filter:none !important; -webkit-filter:none !important; }
+    [style*="backdrop-filter"]{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+    [style*="mix-blend-mode"]{ mix-blend-mode:normal !important; }
+  }
+</style>
+<script src="image-slot.js"></script>
+</helmet>
+
+<div style="position:relative;width:100%;overflow-x:clip;background:#010101;color:#fff;">
+
+  <!-- dot-grid texture across the top -->
+  <div style="position:absolute;left:0;right:0;top:0;height:1500px;z-index:0;pointer-events:none;background:radial-gradient(circle, rgba(170,225,232,.16) 1.4px, transparent 1.7px) 0 0/26px 26px;-webkit-mask-image:radial-gradient(120% 80% at 26% 34%, #000 0%, rgba(0,0,0,.5) 46%, transparent 78%);mask-image:radial-gradient(120% 80% at 26% 34%, #000 0%, rgba(0,0,0,.5) 46%, transparent 78%);"></div>
+
+  <!-- ambient glows -->
+  <div style="position:absolute;left:50%;top:520px;width:1600px;height:640px;transform:translateX(-50%);z-index:0;pointer-events:none;background:radial-gradient(50% 50% at 50% 50%, rgba(1,196,207,.22), transparent 70%);filter:blur(120px);"></div>
+  <div style="position:absolute;left:-260px;top:1900px;width:1400px;height:700px;z-index:0;pointer-events:none;background:radial-gradient(50% 50% at 50% 50%, rgba(1,196,207,.14), transparent 72%);filter:blur(130px);"></div>
+  <div style="position:absolute;right:-320px;top:3200px;width:1300px;height:700px;z-index:0;pointer-events:none;background:radial-gradient(50% 50% at 50% 50%, rgba(1,196,207,.13), transparent 72%);filter:blur(130px);"></div>
+
+  <!-- ===================== NAV ===================== -->
+  <div data-nav="" style="position:fixed;top:34px;left:50%;transform:translateX(-50%);z-index:60;display:flex;gap:16px;align-items:stretch;">
+    <a href="/" data-nav-pill="" style="display:flex;align-items:center;gap:7px;text-decoration:none;border-radius:5.19px;padding:21px 22px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
+      <img src="assets/mark-white.svg" alt="" style="width:21px;height:28px;display:block;">
+      <img src="assets/word-white.svg" alt="Point26" style="width:88px;height:19px;display:block;">
+    </a>
+    <div data-nav-pill="" data-nav-menu="" style="display:flex;align-items:center;gap:55.36px;border-radius:7.5px;padding:15.6px 40.34px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
+      <a href="/how-it-works" data-nav-ink="" style="text-decoration:none;font-size:16.89px;font-weight:200;text-transform:capitalize;white-space:nowrap;">How It Works</a>
+      <a href="/about" data-nav-ink="" style="text-decoration:none;font-size:16.89px;font-weight:200;text-transform:capitalize;white-space:nowrap;">About Us</a>
+      <a href="/iso-resources" data-nav-ink="" style="text-decoration:none;font-size:16.89px;font-weight:400;text-transform:capitalize;white-space:nowrap;color:#01C4CF;">ISO Resources</a>
+      <a href="/contact" data-nav-btn="" style="color:#ffffff;text-decoration:none;font-size:16.89px;font-weight:200;text-transform:capitalize;white-space:nowrap;background:rgba(0,50,56,.73);border-width:0.5px;border-style:solid;border-radius:62px;padding:9.38px 17.83px;">Contact Us</a>
+    </div>
+    <a href="#" data-nav-burger="" data-nav-pill="" aria-label="Menu" onClick="{{ toggleMenu }}" style="display:none;align-items:center;justify-content:center;width:60px;border-radius:7.5px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);text-decoration:none;">
+      <span style="position:relative;display:block;width:22px;height:13px;">
+        <span style="position:absolute;left:0;top:0;width:100%;height:1.6px;border-radius:2px;background:#fff;"></span>
+        <span style="position:absolute;left:0;top:5.7px;width:100%;height:1.6px;border-radius:2px;background:#fff;"></span>
+        <span style="position:absolute;left:0;top:11.4px;width:100%;height:1.6px;border-radius:2px;background:#fff;"></span>
+      </span>
+    </a>
+  </div>
+
+  <!-- mobile nav menu -->
+  <div data-navmenu="" style="display:flex;position:fixed;top:0;left:0;right:0;bottom:0;z-index:70;flex-direction:column;align-items:center;padding:98px 24px 42px;gap:28px;background:linear-gradient(180deg,rgba(2,16,18,.96),rgba(1,11,13,.99));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:0 0 12px 12px;transform:translateY(-16px);opacity:0;pointer-events:none;transition:opacity .32s ease,transform .32s ease;">
+    <a href="/" style="position:relative;z-index:1;display:block;width:100%;max-width:354px;text-align:center;padding:10px 0;color:#fff;font-size:22px;font-weight:300;text-transform:capitalize;text-decoration:none;-webkit-tap-highlight-color:rgba(1,196,207,.25);">Home</a>
+    <a href="/how-it-works" style="position:relative;z-index:1;display:block;width:100%;max-width:354px;text-align:center;padding:10px 0;color:#fff;font-size:22px;font-weight:300;text-transform:capitalize;text-decoration:none;-webkit-tap-highlight-color:rgba(1,196,207,.25);">How It Works</a>
+    <a href="/about" style="position:relative;z-index:1;display:block;width:100%;max-width:354px;text-align:center;padding:10px 0;color:#fff;font-size:22px;font-weight:300;text-transform:capitalize;text-decoration:none;-webkit-tap-highlight-color:rgba(1,196,207,.25);">About Us</a>
+    <a href="/iso-resources" style="color:#01C4CF;font-size:22px;font-weight:400;text-transform:capitalize;text-decoration:none;">ISO Resources</a>
+    <a href="/contact" style="position:relative;z-index:1;display:block;width:100%;max-width:354px;text-align:center;padding:10px 0;color:#fff;font-size:22px;font-weight:300;text-transform:capitalize;text-decoration:none;-webkit-tap-highlight-color:rgba(1,196,207,.25);">Contact Us</a>
+  </div>
+
+  <!-- ===================== HERO + ISO APPLICATION ===================== -->
+  <section id="iso-application" data-screen-label="Hero" style="position:relative;z-index:2;padding:190px 40px 90px;">
+    <div data-hero-grid="" style="max-width:1648px;margin:0 auto;display:grid;grid-template-columns:1fr 814px;gap:60px;align-items:start;">
+
+      <!-- left copy -->
+      <div data-hero-copy="" style="padding-top:56px;">
+        <p data-load="" style="margin:0;font-size:24px;font-weight:400;line-height:1.25;text-transform:uppercase;letter-spacing:.02em;color:#01C4CF;transition-delay:60ms;">ISO Partnerships</p>
+        <h1 data-h2="" data-load="" style="margin:14px 0 0;font-size:clamp(34px,3.1vw,40px);line-height:1.25;font-weight:400;color:#fff;text-transform:capitalize;text-wrap:balance;transition-delay:150ms;">Fast funding. Dedicated support.<br>Same day approval.</h1>
+
+        <p data-load="" style="margin:26px 0 0;max-width:430px;font-size:17px;font-weight:300;line-height:1.6;color:rgba(255,255,255,.8);transition-delay:260ms;">Refer your clients to revenue-based funding that closes in 24 hours — and earn on every deal. Apply below to join the Point26 ISO network.</p>
+
+        <!-- We Support -->
+        <p data-load="" data-support-label="" style="margin:52px 0 20px;font-size:18px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#fff;transition-delay:360ms;">We Support</p>
+        <div data-load="" data-support="" style="display:grid;grid-template-columns:repeat(2,max-content);gap:10px;transition-delay:440ms;">
+          <span style="display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);border:0.6px solid rgba(255,255,255,.55);border-radius:57px;padding:8px 16px;font-size:13.4px;font-weight:300;line-height:1.5;text-transform:capitalize;color:#fff;white-space:nowrap;">Healthcare &amp; Medical Practices</span>
+          <span style="display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);border:0.6px solid rgba(255,255,255,.55);border-radius:57px;padding:8px 16px;font-size:13.4px;font-weight:300;line-height:1.5;text-transform:capitalize;color:#fff;white-space:nowrap;">E-commerce &amp; Retail</span>
+          <span style="display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);border:0.6px solid rgba(255,255,255,.55);border-radius:57px;padding:8px 16px;font-size:13.4px;font-weight:300;line-height:1.5;text-transform:capitalize;color:#fff;white-space:nowrap;">Restaurants &amp; Food Service</span>
+          <span style="display:inline-flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);border:0.6px solid rgba(255,255,255,.55);border-radius:57px;padding:8px 16px;font-size:13.4px;font-weight:300;line-height:1.5;text-transform:capitalize;color:#fff;white-space:nowrap;">Construction &amp; Contractors</span>
+        </div>
+      </div>
+
+      <!-- right: ISO Application form card -->
+      <div data-form-card="" data-load="" style="position:relative;border-radius:15px;overflow:hidden;background:radial-gradient(130% 90% at 12% 102%, rgba(1,196,207,.28) 0%, rgba(1,196,207,.1) 34%, rgba(1,196,207,0) 66%), linear-gradient(180deg, rgba(180,240,240,.1) -2.94%, rgba(152,221,255,0) 100%), rgba(4,40,42,.28);box-shadow:inset 0 3px 3px rgba(213,238,239,.18), inset 0 108px 132px rgba(11,120,128,.2);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:46px 60px 52px;transition-delay:220ms;">
+        <p data-form-fullonly="" style="margin:0;font-size:18px;font-weight:300;line-height:1.5;text-transform:capitalize;color:#fff;">ISO Application</p>
+        <h2 data-form-fullonly="" style="margin:12px 0 0;font-size:32px;font-weight:400;line-height:1.2;text-transform:capitalize;color:#fff;">Join our ISO network and start earning today</h2>
+
+        <!-- SIMPLE stepped form (mobile only) -->
+        <div data-form-simple="" style="display:none;flex-direction:column;position:relative;min-height:auto;">
+          <p style="margin:0;font-size:15px;font-weight:300;letter-spacing:.02em;text-transform:uppercase;color:#01C4CF;">ISO Application</p>
+          <h2 style="margin:12px 0 0;font-size:32px;font-weight:400;line-height:1.1;color:#fff;">{{ mTitle }}</h2>
+          <p style="margin:14px 0 0;font-size:15px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.62);">{{ mHint }}</p>
+
+          <sc-if value="{{ mIsText }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top:28px;display:flex;align-items:stretch;gap:10px;">
+              <sc-if value="{{ mShowCountry }}" hint-placeholder-val="{{ false }}">
+                <div style="flex:none;display:flex;align-items:center;gap:7px;padding:0 16px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);font-size:16px;font-weight:400;color:#fff;white-space:nowrap;">&#127482;&#127480; +1</div>
+              </sc-if>
+              <input type="{{ mType }}" value="{{ mValue }}" onInput="{{ onMField }}" placeholder="{{ mPlaceholder }}" aria-label="{{ mStepLabel }}" style="flex:1;min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:18px;font-family:inherit;font-size:17px;font-weight:300;color:#fff;outline:none;">
+            </div>
+          </sc-if>
+          <sc-if value="{{ mIsUpload }}" hint-placeholder-val="{{ false }}">
+            <label style="margin-top:28px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;border:1px dashed rgba(255,255,255,.4);border-radius:14px;padding:30px 20px;cursor:pointer;background:rgba(255,255,255,.04);">
+              <input type="file" multiple="" onChange="{{ onMFile }}" style="position:absolute;inset:0;opacity:0;cursor:pointer;">
+              <svg width="26" height="28" viewBox="0 0 28 30" fill="none"><path d="M14 22V6M14 6L7 13M14 6l7 7" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 24h20" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></path></svg>
+              <p style="margin:4px 0 0;font-size:14px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.85);">Driver's License &middot; Voided Check<br>Signed ISO Contract &middot; W-9 Form</p>
+              <p style="margin:0;font-size:13px;font-weight:400;color:#01C4CF;">{{ mFileLabel }}</p>
+              <p style="margin:0;font-size:12px;font-weight:300;color:rgba(255,255,255,.4);">10MB max</p>
+            </label>
+          </sc-if>
+
+          <div style="margin-top:24px;display:flex;align-items:center;gap:8px;">
+            <sc-for list="{{ mDots }}" as="d" hint-placeholder-count="6">
+              <span style="width:{{ d.w }};height:6px;border-radius:6px;background:{{ d.bg }};transition:width .3s ease,background .3s ease;"></span>
+            </sc-for>
+          </div>
+          <p style="margin:12px 0 0;font-size:13px;font-weight:300;color:rgba(255,255,255,.5);">Step {{ mStepNum }} of {{ mTotal }} &middot; {{ mTimeLabel }}</p>
+
+          <button onClick="{{ onMNext }}" style="margin-top:24px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#003238;border:none;border-radius:40px;padding:18px 24px;font-family:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:transform .15s ease,background .2s ease;" style-hover="transform:translateY(-1px);background:#eafafa;">{{ mCta }}</button>
+          <sc-if value="{{ mBack }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ onMBack }}" style="margin-top:14px;width:100%;background:transparent;border:none;color:rgba(255,255,255,.6);font-family:inherit;font-size:14px;font-weight:300;cursor:pointer;">&larr; Back</button>
+          </sc-if>
+          <p style="margin:18px 0 0;font-size:12px;font-weight:300;line-height:1.5;text-align:center;color:rgba(255,255,255,.45);">By continuing you consent to Point26 contacting you. Opt out anytime.</p>
+
+          <!-- success: dissolve into the brand orb -->
+          <sc-if value="{{ mDone }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:-22px;right:-22px;top:-30px;bottom:-36px;z-index:6;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:15px;background:radial-gradient(120% 120% at 50% 42%, #063a40 0%, #04232a 62%, #04181c 100%);animation:doneFade .55s cubic-bezier(.16,1,.3,1) both;">
+              <div style="position:relative;width:min(300px,78%);aspect-ratio:1;animation:orbPulse 5s ease-in-out infinite;">
+                <div style="position:absolute;inset:-12%;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(0,150,158,.5) 40%, rgba(80,190,192,.3) 64%, rgba(170,222,222,.12) 82%, transparent 100%);filter:blur(38px);animation:orbBreath 5s ease-in-out infinite;"></div>
+                <div style="position:absolute;inset:2%;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(0,172,180,.95) 0%, rgba(1,142,150,.9) 38%, rgba(3,114,122,.72) 58%, rgba(95,198,200,.46) 74%, rgba(175,224,224,.2) 88%, transparent 100%);"></div>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 26px;text-align:center;">
+                  <span style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+                  <h3 style="margin:0;font-size:26px;font-weight:400;line-height:1.1;color:#fff;">Thank you!</h3>
+                  <p style="margin:12px 0 0;font-size:15px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.92);">We'll be in touch within 24 hours.</p>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+        <form ref="{{ isoFormRef }}" data-form-full="" onSubmit="{{ onSubmit }}" style="margin-top:40px;display:flex;flex-direction:column;gap:38px;{{ isoFormStyle }}">
+          <div>
+            <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:9px;">Full name*</label>
+            <input name="name" type="text" required="" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.9);outline:none;padding:0 0 8px;font-family:inherit;font-size:17px;font-weight:300;color:#fff;">
+          </div>
+          <div data-form-fields-row="" style="display:flex;gap:30px;">
+            <div style="flex:1;min-width:0;">
+              <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:9px;">email*</label>
+              <input name="email" type="email" required="" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.9);outline:none;padding:0 0 8px;font-family:inherit;font-size:17px;font-weight:300;color:#fff;">
+            </div>
+            <div style="flex:1;min-width:0;">
+              <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:9px;">phone*</label>
+              <input name="phone" type="tel" required="" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.9);outline:none;padding:0 0 8px;font-family:inherit;font-size:17px;font-weight:300;color:#fff;">
+            </div>
+          </div>
+          <div data-form-fields-row="" style="display:flex;gap:30px;">
+            <div style="flex:1;min-width:0;">
+              <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:9px;">company name</label>
+              <input name="company" type="text" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.9);outline:none;padding:0 0 8px;font-family:inherit;font-size:17px;font-weight:300;color:#fff;">
+            </div>
+            <div style="flex:1;min-width:0;">
+              <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:9px;">company type</label>
+              <select name="companyType" ref="{{ ctypeRef }}" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.9);outline:none;padding:0 0 8px;font-family:inherit;font-size:17px;font-weight:300;color:#fff;">
+                <option value="" style="color:#003238;">Select company type</option>
+                <option value="ISO" style="color:#003238;">ISO</option>
+                <option value="Broker" style="color:#003238;">Broker</option>
+                <option value="Agency" style="color:#003238;">Agency</option>
+                <option value="Referral Partner" style="color:#003238;">Referral Partner</option>
+                <option value="Other" style="color:#003238;">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:9px;">message</label>
+            <textarea name="message" rows="3" placeholder="Tell us about your book of business" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.9);outline:none;padding:0 0 8px;font-family:inherit;font-size:17px;font-weight:300;color:#fff;resize:vertical;"></textarea>
+          </div>
+
+          <div>
+            <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:14px;">Upload Required Documents*</label>
+            <label style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;border:1px dashed rgba(255,255,255,.6);border-radius:6px;padding:30px 20px;cursor:pointer;transition:background .25s ease,border-color .25s ease;" style-hover="background:rgba(255,255,255,.04);border-color:rgba(1,196,207,.7);">
+              <input ref="{{ docsRef }}" type="file" multiple="" onChange="{{ onFile }}" style="position:absolute;inset:0;opacity:0;cursor:pointer;">
+              <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#fff;">Driver's License&nbsp; |&nbsp; Voided Check<br>Signed ISO Contract&nbsp; |&nbsp; W-9 Form</p>
+              <svg width="28" height="30" viewBox="0 0 28 30" fill="none" style="margin-top:8px;"><path d="M14 22V6M14 6L7 13M14 6l7 7" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 24h20" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></path></svg>
+              <p style="margin:6px 0 0;font-size:14px;font-weight:300;color:rgba(255,255,255,.73);">{{ fileLabel }}</p>
+              <p style="margin:0;font-size:14px;font-weight:300;color:rgba(255,255,255,.4);">10MB max</p>
+            </label>
+          </div>
+
+          <div style="display:flex;justify-content:flex-end;align-items:center;gap:18px;padding-top:6px;">
+            <p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrStyle }}">Please upload the required documents.</p>
+            <button type="submit" style="display:inline-flex;align-items:center;gap:13px;background:transparent;cursor:pointer;font-family:inherit;border:0.6px solid #FDFDFD;border-radius:41px;padding:12px 18px 12px 12px;transition:background .25s ease;" style-hover="background:rgba(255,255,255,.08);">
+              <span style="display:flex;align-items:center;justify-content:center;width:41px;height:24px;border:0.5px solid #00F1FF;border-radius:15px;color:#00F1FF;font-size:15px;">→</span>
+              <span style="font-size:18px;font-weight:300;text-transform:capitalize;color:#fff;">Submit</span>
+            </button>
+          </div>
+          <p style="margin:0;max-width:602px;font-size:14px;font-weight:300;line-height:1.5;text-transform:capitalize;color:rgba(255,255,255,.73);">By submitting, you consent to point 26 capital contacting you. You can opt out anytime. Visit <span title="Coming soon" style="color:rgba(1,196,207,.5);cursor:default;">Privacy Policy</span> for more information.</p>
+        </form>
+        <div style="margin-top:40px;border:1px solid rgba(1,196,207,.4);border-radius:15px;padding:40px 32px;text-align:center;background:rgba(1,196,207,.08);{{ isoDoneStyle }}">
+          <span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.16);margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+          <h3 style="margin:0;font-size:26px;font-weight:400;line-height:1.15;color:#fff;">Thank you!</h3>
+          <p style="margin:12px 0 0;font-size:16px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.85);">We'll be in touch within 24 hours.</p>
+          <button onClick="{{ isoReset }}" style="margin-top:22px;display:inline-flex;align-items:center;gap:10px;background:transparent;cursor:pointer;font-family:inherit;border:0.6px solid rgba(255,255,255,.7);border-radius:41px;padding:11px 20px;font-size:15px;font-weight:300;color:#fff;">Submit Another Application</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ISO PARTNER PROCESS (scroll-pinned) ===================== -->
+  <section data-screen-label="Process" data-proc-sec="" style="position:relative;z-index:2;height:300vh;">
+    <div data-proc-stage="" style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0 40px;">
+      <div style="max-width:1648px;margin:0 auto;width:100%;">
+        <p style="margin:0 0 14px;font-size:16px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#01C4CF;">How It Works</p>
+        <h2 style="margin: 0 0 72px; font-size: clamp(34px,3.6vw,52px); font-weight: 400; line-height: 1.2; color: #EDEDED; text-transform: capitalize">The ISO Partner Process</h2>
+        <div style="position:relative;">
+          <div data-proc-track="" style="position:absolute;top:26px;left:calc(50% - 50vw);right:calc(50% - 50vw);height:2px;background:rgba(255,255,255,.14);z-index:0;"></div>
+          <div data-proc-fill="" style="position:absolute;top:26px;left:0;height:2px;width:0%;background:#01C4CF;box-shadow:0 0 14px rgba(1,196,207,.7);z-index:0;"></div>
+          <div data-proc-grid3="" style="position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
+        <div data-proc-step="" style="transition:opacity .45s ease;opacity:1;">
+          <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+            <span data-proc-num="" style="flex:none;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border:1px solid rgba(255,255,255,.5);border-radius:50%;font-size:22px;font-weight:400;color:#fff;background:#010101;transition:background .4s ease,border-color .4s ease,color .4s ease,box-shadow .4s ease;">1</span>
+            <span data-proc-icon="" style="flex:none;display:flex;align-items:center;justify-content:center;padding:8px;border-radius:50%;background:#010101;color:rgba(255,255,255,.5);transition:color .4s ease;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V6"></path><path d="M5 13l7-7 7 7"></path></svg></span>
+          </div>
+          <h3 style="margin:34px 0 0;font-size:clamp(24px,2vw,30px);font-weight:400;line-height:1.25;color:#fff;text-transform:capitalize;">Submit Application</h3>
+          <p style="margin:14px 0 0;max-width:340px;font-size:16px;font-weight:300;line-height:1.55;color:rgba(255,255,255,.75);">Complete our simple ISO application form with your business details.</p>
+        </div>
+        <div data-proc-step="" style="transition:opacity .45s ease;opacity:1;">
+          <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+            <span data-proc-num="" style="flex:none;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border:1px solid rgba(255,255,255,.5);border-radius:50%;font-size:22px;font-weight:400;color:#fff;background:#010101;transition:background .4s ease,border-color .4s ease,color .4s ease,box-shadow .4s ease;">2</span>
+            <span data-proc-icon="" style="flex:none;display:flex;align-items:center;justify-content:center;padding:8px;border-radius:50%;background:#010101;color:rgba(255,255,255,.5);transition:color .4s ease;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span>
+          </div>
+          <h3 style="margin:34px 0 0;font-size:clamp(24px,2vw,30px);font-weight:400;line-height:1.25;color:#fff;text-transform:capitalize;">Review &amp; Approval</h3>
+          <p style="margin:14px 0 0;max-width:340px;font-size:16px;font-weight:300;line-height:1.55;color:rgba(255,255,255,.75);">Our team reviews and approves qualified partners within 24–48 hours.</p>
+        </div>
+        <div data-proc-step="" style="transition:opacity .45s ease;opacity:1;">
+          <div style="position:relative;z-index:1;display:flex;align-items:center;gap:16px;">
+            <span data-proc-num="" style="flex:none;display:flex;align-items:center;justify-content:center;width:52px;height:52px;border:1px solid rgba(255,255,255,.5);border-radius:50%;font-size:22px;font-weight:400;color:#fff;background:#010101;transition:background .4s ease,border-color .4s ease,color .4s ease,box-shadow .4s ease;">3</span>
+            <span data-proc-icon="" style="flex:none;display:flex;align-items:center;justify-content:center;padding:8px;border-radius:50%;background:#010101;color:rgba(255,255,255,.5);transition:color .4s ease;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.8 5.9 20.4l1.5-6.8L2.2 9l6.9-.7z"></path></svg></span>
+          </div>
+          <h3 style="margin:34px 0 0;font-size:clamp(24px,2vw,30px);font-weight:400;line-height:1.25;color:#fff;text-transform:capitalize;">Start Earning</h3>
+          <p style="margin:14px 0 0;max-width:340px;font-size:16px;font-weight:300;line-height:1.55;color:rgba(255,255,255,.75);">Begin referring clients and earning commissions on every successful deal.</p>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BENEFITS ===================== -->
+  <section data-screen-label="Benefits" style="position:relative;z-index:2;padding:110px 40px 120px;background:linear-gradient(180deg,#f6fdfd 0%,#eaf7f7 100%);">
+    <div style="max-width:1648px;margin:0 auto;">
+      <div data-why-reveal="" style="text-align:center;max-width:720px;margin:0 auto 64px;">
+        <p style="margin:0;font-size:14px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:#0b8e98;">Why Partner</p>
+        <h2 style="margin:22px 0 0;font-size:clamp(32px,3.2vw,44px);font-weight:400;line-height:1.18;letter-spacing:-.01em;color:#003238;text-transform:capitalize;">Benefits Of Working With Point 26</h2>
+      </div>
+
+      <div data-benefits-card="" style="display:grid;grid-template-columns:0.92fr 1.08fr;border-radius:30px;overflow:hidden;box-shadow:0 50px 120px -50px rgba(0,50,56,.55);">
+        <!-- LEFT brand panel -->
+        <div data-why-reveal="" data-benefits-brand="" style="position:relative;overflow:hidden;min-height:560px;padding:52px;display:flex;flex-direction:column;justify-content:flex-end;background:radial-gradient(130% 120% at 6% 4%, #0e3f46 0%, #0a2a30 46%, #06181c 100%);">
+          <div style="position:absolute;top:-150px;left:-150px;width:440px;height:440px;border-radius:50%;background:conic-gradient(from 205deg at 50% 50%, #01C4CF, #0a7f88 52%, transparent 60%);opacity:.92;pointer-events:none;"></div>
+          <div style="position:absolute;top:-64px;left:-64px;width:250px;height:250px;border-radius:50%;background:#08222699;backdrop-filter:blur(8px);pointer-events:none;"></div>
+          <div style="position:relative;">
+            <h3 style="margin:0;font-size:clamp(30px,2.6vw,40px);font-weight:400;line-height:1.12;color:#fff;">Partners earn<br>more, faster.</h3>
+            <p style="margin:20px 0 0;max-width:360px;font-size:16px;font-weight:300;line-height:1.6;color:rgba(255,255,255,.72);">Real commissions, honest terms, and a team that moves at the speed of your deals.</p>
+            <div style="margin-top:28px;display:flex;align-items:center;gap:12px;">
+              <img src="assets/mark-white.svg" alt="" style="height:26px;display:block;opacity:.9;">
+              <span style="font-size:14px;font-weight:300;letter-spacing:.04em;color:rgba(255,255,255,.58);">The Point26 Partnership</span>
+            </div>
+          </div>
+        </div>
+        <!-- RIGHT list -->
+        <div data-swipe-hint="" style="display:none;align-items:center;justify-content:center;gap:8px;padding:16px 0 2px;color:rgba(140,225,232,.9);font-size:12px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;">
+          <span>Swipe to explore</span>
+          <span style="display:inline-flex;animation:swipeNudge 1.4s ease-in-out infinite;">&rarr;</span>
+        </div>
+        <div data-benefits-list="" style="padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px;background:#0a2024;">
+          <div data-why-reveal="" style="border-radius:16px;padding:22px 22px;background:#0e262b;border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:12px;transition:background .25s ease,border-color .25s ease,transform .25s ease;" style-hover="background:#123036;border-color:rgba(1,196,207,.4);transform:translateY(-3px);">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.16em;color:#01C4CF;margin-bottom:2px;">01</span>
+            <h4 style="margin:0;font-size:18px;font-weight:400;line-height:1.28;color:#fff;text-transform:capitalize;">High Commission Structure</h4>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.6);">Earn competitive commissions on every successful funding deal you refer.</p>
+          </div>
+          <div data-why-reveal="" style="border-radius:16px;padding:22px 22px;background:#0e262b;border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:12px;transition:background .25s ease,border-color .25s ease,transform .25s ease;" style-hover="background:#123036;border-color:rgba(1,196,207,.4);transform:translateY(-3px);">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.16em;color:#01C4CF;margin-bottom:2px;">02</span>
+            <h4 style="margin:0;font-size:18px;font-weight:400;line-height:1.28;color:#fff;text-transform:capitalize;">Fast Approval Process</h4>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.6);">Quick decisions mean your clients get funded fast and you get paid sooner.</p>
+          </div>
+          <div data-why-reveal="" style="border-radius:16px;padding:22px 22px;background:#0e262b;border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:12px;transition:background .25s ease,border-color .25s ease,transform .25s ease;" style-hover="background:#123036;border-color:rgba(1,196,207,.4);transform:translateY(-3px);">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.16em;color:#01C4CF;margin-bottom:2px;">03</span>
+            <h4 style="margin:0;font-size:18px;font-weight:400;line-height:1.28;color:#fff;text-transform:capitalize;">Dedicated Support</h4>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.6);">Personal account manager and support team to help you succeed.</p>
+          </div>
+          <div data-why-reveal="" style="border-radius:16px;padding:22px 22px;background:#0e262b;border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:12px;transition:background .25s ease,border-color .25s ease,transform .25s ease;" style-hover="background:#123036;border-color:rgba(1,196,207,.4);transform:translateY(-3px);">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.16em;color:#01C4CF;margin-bottom:2px;">04</span>
+            <h4 style="margin:0;font-size:18px;font-weight:400;line-height:1.28;color:#fff;text-transform:capitalize;">Flexible Partnership</h4>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.6);">Various levels and terms to suit your business model.</p>
+          </div>
+          <div data-why-reveal="" style="border-radius:16px;padding:22px 22px;background:#0e262b;border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:12px;transition:background .25s ease,border-color .25s ease,transform .25s ease;" style-hover="background:#123036;border-color:rgba(1,196,207,.4);transform:translateY(-3px);">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.16em;color:#01C4CF;margin-bottom:2px;">05</span>
+            <h4 style="margin:0;font-size:18px;font-weight:400;line-height:1.28;color:#fff;text-transform:capitalize;">Marketing Materials</h4>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.6);">Access professional tools to promote our services effectively.</p>
+          </div>
+          <div data-why-reveal="" style="border-radius:16px;padding:22px 22px;background:#0e262b;border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:12px;transition:background .25s ease,border-color .25s ease,transform .25s ease;" style-hover="background:#123036;border-color:rgba(1,196,207,.4);transform:translateY(-3px);">
+            <span style="font-size:12px;font-weight:600;letter-spacing:.16em;color:#01C4CF;margin-bottom:2px;">06</span>
+            <h4 style="margin:0;font-size:18px;font-weight:400;line-height:1.28;color:#fff;text-transform:capitalize;">Real-Time Tracking</h4>
+            <p style="margin:0;font-size:14px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.6);">Monitor referrals and commissions through our partner portal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER (matches other pages) ===================== -->
+  <section id="footer" data-screen-label="Footer" style="position:relative;z-index:2;background:linear-gradient(180deg,#ffffff 0%,#eafafa 15%,#c4e9ea 28%,#8fcace 40%,#4ea3a9 52%,#23787e 64%,#0f4d52 76%,#072e33 88%,#04181c 100%);padding:60px 0 0;">
+    <div data-foot-track="1" style="position:relative;height:calc(100vh + 760px);">
+      <div data-foot-stage="1" style="position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3vh;">
+        <div data-email-block="1" style="flex:none;position:relative;z-index:1;text-align:center;max-width:760px;width:100%;padding:0 24px;{{ emailFade }}">
+          <h3 style="margin:0;font-size:48px;line-height:1.08;font-weight:400;letter-spacing:-.01em;color:#003238;">Sign Up For Our Email List</h3>
+          <p style="margin:18px auto 0;max-width:440px;font-size:17px;font-weight:300;line-height:1.5;color:#2b5356;">Get funding insights, capital tips, and Point26 updates delivered straight to your inbox.</p>
+          <div data-email-row="" style="display:flex;justify-content:center;align-items:center;gap:0;max-width:440px;margin:30px auto 0;border:1px solid rgba(0,50,56,.25);border-radius:60px;padding:6px 6px 6px 24px;background:rgba(255,255,255,.6);{{ formShow }}">
+            <input ref="{{ emailRef }}" type="email" placeholder="Enter your email" aria-label="Email address" style="flex:1;min-width:0;background:transparent;border:none;font-size:16px;color:#003238;font-family:inherit;outline:none;">
+            <button onClick="{{ subscribe }}" aria-label="Subscribe" style="flex:none;display:inline-flex;align-items:center;gap:8px;background:#003238;color:#fff;border:none;border-radius:60px;padding:12px 22px;font-size:15px;font-weight:300;cursor:pointer;font-family:inherit;transition:background .25s;" style-hover="background:#01666e;">Subscribe <span style="color:#00F1FF;">&rarr;</span></button>
+          </div>
+          <p style="margin:12px 0 0;font-size:14px;font-weight:300;color:#b3261e;{{ subErrStyle }}">Please enter a valid email address.</p>
+          <p style="margin:26px auto 0;max-width:460px;font-size:18px;font-weight:400;line-height:1.5;color:#003238;{{ thanksShow }}">Thank you &mdash; you're on the list. Funding insights are on the way.</p>
+        </div>
+
+        <div data-banner-block="1" style="flex:none;position:relative;z-index:3;width:100%;{{ bannerOuter }}">
+          <div style="position:relative;min-height:380px;overflow:hidden;box-shadow:0 -10px 60px -30px rgba(0,50,56,.4);{{ bannerInner }}">
+            <div style="position:absolute;inset:0;background:linear-gradient(160deg,#0c5a64 0%,#073e46 45%,#04181c 100%);"></div>
+            <video ref="{{ videoRef }}" autoplay="" loop="" muted="" playsinline="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+            <div style="position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 0%, rgba(1,196,207,.2), transparent 60%);mix-blend-mode:screen;pointer-events:none;"></div>
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,50,56,.34) 0%,rgba(0,50,56,.12) 38%,rgba(4,24,28,.82) 100%);pointer-events:none;"></div>
+            <div style="position:absolute;left:0;right:0;bottom:0;padding:0 6% 16%;text-align:center;pointer-events:none;">
+              <h2 style="margin:0;font-size:clamp(40px,6vw,96px);font-weight:400;letter-spacing:-.01em;color:#fff;">Fast. Fair. Funded.</h2>
+              <p style="margin:18px auto 0;max-width:560px;font-size:15px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.85);{{ subFade }}">Point26 provides revenue-based capital for growing businesses. Terms disclosed up front, with no hard credit pulls.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-foot-logo="" style="display:flex;justify-content:center;align-items:center;gap:30px;padding:50px 24px 50px;">
+      <img src="assets/mark-white.svg" alt="" style="height:150px;display:block;">
+      <img src="assets/word-white.svg" alt="Point26" style="height:104px;display:block;">
+    </div>
+    <div data-foot-links="" style="max-width:1440px;margin:0 auto;border-top:1px solid rgba(255,255,255,.14);padding:26px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;color:#fff;font-size:15px;font-weight:300;">
+      <span title="Coming soon" style="color:#fff;opacity:.5;cursor:default;">Privacy Policy</span>
+      <span title="Coming soon" style="color:#fff;opacity:.5;cursor:default;">Terms &amp; Conditions</span>
+      <span style="opacity:.85;">Designed With &#9829; By DA</span>
+    </div>
+  </section>
+
+</div>
+
+<template id="__bundler_thumbnail" data-bg-color="#04181c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#04181c"></rect>
+    <g transform="translate(600 372)">
+      <path d="M-150 40 L-150 -14 L-40 -96 a24 24 0 0 1 28 0 L98 6 L98 40 L54 40 L54 6 L-16 -46 L-86 6 L-86 40 Z" fill="#ffffff"></path>
+    </g>
+    <text x="600" y="500" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="70" font-weight="700" letter-spacing="-1" fill="#ffffff">Point26</text>
+  </svg>
+</template>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { fileLabel: "Upload an image or a PDF", step: 0, vals: {}, done: false, isoDone: false, isoErr: false, subscribed: false, subErr: false };
+
+  componentDidMount() {
+    // trigger the hero load-in via inline styles (always beats scoped CSS); fallback guarantees visibility
+    const play = () => {
+      try {
+        document.querySelectorAll("[data-load]").forEach((el) => { el.style.opacity = "1"; el.style.transform = "none"; });
+      } catch (e) {}
+    };
+    requestAnimationFrame(() => requestAnimationFrame(play));
+    this._loadFallback = setTimeout(play, 1400);
+
+    // scroll-pinned ISO Partner Process: highlight step 1 -> 2 -> 3 as you scroll
+    const clamp = (x) => Math.max(0, Math.min(1, x));
+    const tick = () => {
+      this._fxRaf = requestAnimationFrame(tick);
+      try {
+        // keep the footer banner-rise holes updating while it's near the viewport
+        const ft = this._footTrack || (this._footTrack = document.querySelector('[data-foot-track]'));
+        if (ft) {
+          const fr = ft.getBoundingClientRect();
+          const near = fr.top < window.innerHeight * 1.1 && fr.bottom > -window.innerHeight * 0.2;
+          if (near && !this._footTick) { this._footTick = true; requestAnimationFrame(() => { this._footTick = false; this.forceUpdate(); }); }
+        }
+        const sec = document.querySelector("[data-proc-sec]");
+        if (!sec) return;
+        const steps = this._procSteps || (this._procSteps = sec.querySelectorAll("[data-proc-step]"));
+        const fill = this._procFill || (this._procFill = sec.querySelector("[data-proc-fill]"));
+        const n = steps.length || 3;
+        // mobile: pinned, one step at a time as you scroll
+        if (window.innerWidth <= 760) {
+          const vhm = window.innerHeight;
+          const denomM = Math.max(1, sec.offsetHeight - vhm);
+          const pm = clamp((window.scrollY - sec.offsetTop) / denomM);
+          const activeM = Math.min(n - 1, Math.floor(pm * n));
+          steps.forEach((el, i) => {
+            el.style.opacity = i === activeM ? "1" : "0";
+            el.style.transform = i === activeM ? "translateY(0)" : (i < activeM ? "translateY(-18px)" : "translateY(18px)");
+            el.style.pointerEvents = i === activeM ? "auto" : "none";
+            const num = el.querySelector("[data-proc-num]"), ic = el.querySelector("[data-proc-icon]");
+            if (num) { num.style.background = "#01C4CF"; num.style.color = "#012a2e"; num.style.borderColor = "#01C4CF"; }
+            if (ic) ic.style.color = "#01C4CF";
+          });
+          if (fill) fill.style.width = (pm * 100).toFixed(1) + "%";
+          return;
+        }
+        const vh = window.innerHeight;
+        const denom = Math.max(1, sec.offsetHeight - vh);
+        const p = clamp((window.scrollY - sec.offsetTop) / denom);
+        const active = Math.min(n - 1, Math.floor(p * n));
+        steps.forEach((el, i) => {
+          const on = i <= active;
+          el.style.opacity = on ? "1" : ".3";
+          const num = el.querySelector("[data-proc-num]"), ic = el.querySelector("[data-proc-icon]");
+          if (num) {
+            num.style.background = on ? "#01C4CF" : "#010101";
+            num.style.color = on ? "#012a2e" : "#fff";
+            num.style.borderColor = on ? "#01C4CF" : "rgba(255,255,255,.5)";
+            num.style.boxShadow = i === active ? "0 0 22px rgba(1,196,207,.6)" : "none";
+          }
+          if (ic) ic.style.color = on ? "#01C4CF" : "rgba(255,255,255,.5)";
+        });
+        if (fill) fill.style.width = (clamp((active + Math.min(1, (p * n) - active)) / (n - 1)) * 100).toFixed(1) + "%";
+      } catch (e) {}
+    };
+    this._fxRaf = requestAnimationFrame(tick);
+    // fallback: if rAF never fires, run the reveal at least once so steps aren't stuck dim
+    this._procFallback = setTimeout(tick, 900);
+  }
+  componentWillUnmount() { if (this._loadFallback) clearTimeout(this._loadFallback); if (this._procFallback) clearTimeout(this._procFallback); if (this._fxRaf) cancelAnimationFrame(this._fxRaf); }
+
+  // Netlify Forms: the live forms are JS-rendered, so they post directly to the static
+  // definitions in netlify-forms.html. Fails silently off-Netlify (local preview) so the
+  // on-screen confirmation still works.
+  netlifyPost(formName, data) {
+    const body = new URLSearchParams(Object.assign({ "form-name": formName }, data)).toString();
+    try {
+      return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body }).catch(() => {});
+    } catch (e) { return Promise.resolve(); }
+  }
+
+  renderVals() {
+    const footer = (() => {
+      const footEl = (typeof document !== "undefined") ? document.getElementById("footer") : null;
+      const empty = { emailFade: "", subFade: "", bannerOuter: "", bannerInner: "" };
+      if (!footEl) return empty;
+      const track = footEl.querySelector("[data-foot-track]");
+      if (!track) return empty;
+      const DIST = 760;
+      const top = track.getBoundingClientRect().top;
+      const p = Math.max(0, Math.min(1, -top / DIST));
+      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      const fade = 1 - Math.max(0, Math.min(1, (p - 0.4) / 0.3));
+      return {
+        emailFade: `opacity:${fade.toFixed(3)};`,
+        subFade: `opacity:${(1 - Math.max(0, Math.min(1, p / 0.3))).toFixed(3)};`,
+        bannerOuter: `width:100%;max-width:${(1648 + e * 4000).toFixed(0)}px;padding:0 ${(40 * (1 - e)).toFixed(0)}px;`,
+        bannerInner: `border-radius:${(34 * (1 - e)).toFixed(0)}px;height:calc(${(1 - e).toFixed(3)} * min(46vw, 620px) + ${e.toFixed(3)} * 100vh);max-height:none;`,
+      };
+    })();
+    const mSteps = [
+      { key: "name", title: "Let's get started!", label: "Full name", type: "text", ph: "Your full name", hint: "First, what's your name?" },
+      { key: "phone", title: "What's your number?", label: "Phone", type: "tel", ph: "(650) 213-7390", hint: "We'll text you a confirmation code.", country: true },
+      { key: "email", title: "And your email?", label: "Email", type: "email", ph: "you@company.com", hint: "Where should we send your approval?" },
+      { key: "company", title: "Tell us your company", label: "Company name", type: "text", ph: "Your company", hint: "What's your company called?" },
+      { key: "ctype", title: "What do you do?", label: "Company type", type: "text", ph: "e.g. ISO, broker, agency", hint: "What kind of business do you run?" },
+      { key: "docs", title: "Almost there!", label: "Documents", type: "file", ph: "", hint: "Last step — upload your documents to finish.", upload: true },
+    ];
+    const ms = this.state.step || 0;
+    const mcur = mSteps[ms];
+    const mvals = this.state.vals || {};
+    return {
+      ...footer,
+      mTitle: mcur.title,
+      mHint: mcur.hint,
+      mStepLabel: mcur.label,
+      mPlaceholder: mcur.ph,
+      mType: mcur.type,
+      mValue: mvals[mcur.key] || "",
+      mShowCountry: !!mcur.country,
+      mIsText: !mcur.upload,
+      mIsUpload: !!mcur.upload,
+      mFileLabel: this.state.fileLabel,
+      mStepNum: ms + 1,
+      mTotal: mSteps.length,
+      mTimeLabel: "about " + Math.max(1, Math.ceil((mSteps.length - ms) * 15 / 60)) + " min left",
+      mCta: ms < mSteps.length - 1 ? "Continue" : "Submit Application",
+      mBack: ms > 0 && !this.state.done,
+      mDone: !!this.state.done,
+      mDots: mSteps.map((_, i) => ({ w: i === ms ? "26px" : "6px", bg: i <= ms ? "#01C4CF" : "rgba(255,255,255,.25)" })),
+      onMField: (e) => { const v = e.target.value; this.setState((st) => ({ vals: { ...st.vals, [mcur.key]: v } })); },
+      onMFile: (e) => { const f = e && e.target && e.target.files; if (f && f.length) this.setState({ fileLabel: f.length === 1 ? f[0].name : f.length + " files selected" }); },
+      onMNext: () => { if (ms < mSteps.length - 1) this.setState({ step: ms + 1, done: false }); else this.setState({ done: true }); },
+      onMBack: () => this.setState((st) => ({ step: Math.max(0, (st.step || 0) - 1), done: false })),
+      isoFormRef: (el) => { this._isoFormEl = el; },
+      onSubmit: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const files = this._docsEl && this._docsEl.files;
+        if (!files || !files.length) { this.setState({ isoErr: true }); return; }
+        const data = {};
+        const root = this._isoFormEl;
+        if (root) root.querySelectorAll("[name]").forEach((el) => { data[el.name] = el.value || ""; });
+        data.documents = Array.prototype.map.call(files, (f) => f.name).join(", ");
+        this.netlifyPost("iso-application", data);
+        this.setState({ isoErr: false, isoDone: true });
+      },
+      isoErrStyle: this.state.isoErr ? "opacity:1;" : "opacity:0;",
+      isoDoneStyle: this.state.isoDone ? "" : "display:none;",
+      isoFormStyle: this.state.isoDone ? "display:none;" : "",
+      isoReset: () => this.setState({ isoDone: false, isoErr: false, fileLabel: "Upload an image or a PDF" }),
+      docsRef: (el) => { this._docsEl = el; },
+      ctypeRef: (el) => { this._ctypeEl = el; },
+      formShow: this.state.subscribed ? "display:none;" : "",
+      thanksShow: this.state.subscribed ? "" : "display:none;",
+      subErrStyle: this.state.subErr && !this.state.subscribed ? "opacity:1;" : "opacity:0;",
+      emailRef: (el) => { this._emailEl = el; },
+      subscribe: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const v = ((this._emailEl && this._emailEl.value) || "").trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { this.setState({ subErr: true }); return; }
+        this.netlifyPost("newsletter", { email: v, page: document.title });
+        this.setState({ subErr: false, subscribed: true });
+      },
+      videoRef: (el) => {
+        if (!el || this._vinit) return;
+        this._vinit = true;
+        el.muted = true; el.playsInline = true; el.loop = true;
+        el.src = "uploads/Untitled%20Project%203.mp4";
+        el.play().catch(() => {});
+      },
+      onFile: (e) => {
+        const f = e && e.target && e.target.files;
+        if (f && f.length) this.setState({ fileLabel: f.length === 1 ? f[0].name : f.length + " files selected" });
+      },
+      fileLabel: this.state.fileLabel,
+      toggleMenu: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        const m = document.querySelector("[data-navmenu]");
+        if (!m) return;
+        const willOpen = !m.classList.contains("open");
+        m.classList.toggle("open", willOpen);
+        // apply state directly with !important (the scoped .open rule + fade transition don't apply reliably here)
+        m.style.setProperty("transition", "none", "important");
+        m.style.setProperty("opacity", willOpen ? "1" : "0", "important");
+        m.style.setProperty("transform", willOpen ? "translateY(0)" : "translateY(-16px)", "important");
+        m.style.setProperty("pointer-events", willOpen ? "auto" : "none", "important");
+        document.documentElement.classList.toggle("menu-open", willOpen);
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

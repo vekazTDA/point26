@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Form definitions — Point26 Capital</title>
+</head>
+<body>
+<!--
+  Netlify detects forms by parsing static HTML at deploy time. The live site renders its
+  forms with JavaScript, which the build-time parser never sees, so every form is declared
+  here once with the exact field names the live forms post. Do not delete this file — without
+  it Netlify returns "form not found" on submit. This page is noindex and unlinked.
+
+  Submissions appear under: Netlify site → Forms → (contact | iso-application | newsletter)
+-->
+
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="contact">
+  <input type="text" name="bot-field">
+  <input type="text" name="intent">
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <input type="text" name="company">
+  <input type="text" name="companyType">
+  <input type="text" name="address">
+  <textarea name="message"></textarea>
+</form>
+
+<form name="iso-application" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="iso-application">
+  <input type="text" name="bot-field">
+  <input type="text" name="name">
+  <input type="email" name="email">
+  <input type="tel" name="phone">
+  <input type="text" name="company">
+  <input type="text" name="companyType">
+  <textarea name="message"></textarea>
+</form>
+
+<form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="newsletter">
+  <input type="text" name="bot-field">
+  <input type="email" name="email">
+  <input type="text" name="page">
+</form>
+</body>
+</html>
