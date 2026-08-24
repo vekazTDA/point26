@@ -187,6 +187,16 @@
     #mission{ padding-top:96px !important; }
     [data-mwrap]{ width:min(1440px, 95vw, calc((100vh - 116px) * 1.49)) !important; }
   }
+  /* Same class of problem in the footer. The sticky stage is height:100vh with overflow:hidden and
+     stacks the signup block (237px) + 3vh gap + a banner that is min(46vw,620px). Below ~884px of
+     viewport height that stack is taller than the stage, and because it is centred the overflow is
+     split top and bottom -- 50px off the top on a 13", which ate the "Sign Up For Our Email List"
+     heading. Cap the banner so the stack fits, rather than unsticking the whole footer and losing
+     the reveal. 97vh-261px keeps the same 24px breathing room; inert above ~908px tall, where
+     min() still resolves to 620px. Widths <=1100px already unstick the stage entirely, below. */
+  @media (min-width: 1101px) and (max-height: 900px){
+    [data-banner-block] > div{ height:min(46vw, 620px, calc(97vh - 261px)) !important; }
+  }
   /* footer / email-signup layout for narrow desktop + tablet (fixes the banner covering the signup) */
   @media (max-width: 1100px){
     #footer{ padding-top:0 !important; }
