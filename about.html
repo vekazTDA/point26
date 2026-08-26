@@ -100,8 +100,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     [data-team-card] > div:last-child{ left:24px !important; bottom:30px !important; }
     [data-team-card] > div:last-child > div:first-child{ font-size:30px !important; line-height:38px !important; }
     [data-team-dots]{ display:flex !important; }
-    /* mobile already swipes and has dots; the desktop arrows would just duplicate that */
-    [data-team-arrows]{ display:none !important; }
     [data-team-card] [data-bio-overlay]{ display:none !important; }
 
 
@@ -268,7 +266,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 style="margin: 0; font-size: 40px; line-height: 50px; font-weight: 300; text-transform: capitalize; color: #fff">Who We Are</h2>
         <p style="margin: 0; max-width: 539px; font-size: 16px; font-weight: 200; line-height: 1.5; text-transform: capitalize; color: #fff">We Bring Together Multi-Industry Backgrounds And Are United By A Shared Commitment To Making Business Funding More Accessible.</p>
       </div>
-      <div ref="{{ teamRailRef }}" data-team-track="" style="position:relative;z-index:2;display:flex;gap:44px;padding:0 40px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x proximity;">
+      <div ref="{{ teamRailRef }}" data-team-track="" style="position:relative;z-index:2;display:flex;gap:44px;padding:0 40px;justify-content:safe center;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x proximity;">
         <sc-for list="{{ team }}" as="m" hint-placeholder-count="4">
           <div data-team-card="" style="position:relative;flex:none;scroll-snap-align:start;width:464px;height:511px;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -36px rgba(0,0,0,.7);">
             <image-slot id="{{ m.slotId }}" src="{{ m.img }}" shape="rounded" radius="20" placeholder="{{ m.ph }}" style="position:absolute;inset:0;width:100%;height:100%;background:#0d2a2f;transition:transform 1.1s cubic-bezier(.16,1,.3,1);transform:scale(1.001);will-change:transform;filter:{{ m.grade }};" style-hover="transform:scale(1.08);"></image-slot>
@@ -287,11 +285,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
         </sc-for>
-        <div style="flex:none;width:140px;" aria-hidden="true"></div>
-      </div>
-      <div data-team-arrows="" style="position:relative;z-index:2;display:flex;justify-content:center;gap:14px;margin-top:34px;">
-        <button onClick="{{ teamPrev }}" aria-label="Previous team members" style="width:80px;height:49px;border-radius:29px;border:1px solid #00CEDA;background:transparent;color:#00CEDA;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;" style-hover="background:rgba(0,206,218,.1);">&#8592;</button>
-        <button onClick="{{ teamNext }}" aria-label="Next team members" style="width:80px;height:49px;border-radius:29px;border:1px solid #00CEDA;background:transparent;color:#00CEDA;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;" style-hover="background:rgba(0,206,218,.1);">&#8594;</button>
       </div>
       <div data-team-dots="" style="display:none;position:relative;z-index:2;justify-content:center;align-items:center;gap:8px;margin-top:22px;">
         <sc-for list="{{ team }}" as="m" hint-placeholder-count="4">
@@ -651,14 +644,6 @@ class Component extends DCLogic {
     } catch (e) { return Promise.resolve(); }
   }
 
-  teamStep(dir) {
-    const rail = this._teamRail;
-    if (!rail) return;
-    const card = rail.querySelector("[data-team-card]");
-    const step = card ? card.getBoundingClientRect().width + 44 : rail.clientWidth * 0.8;
-    rail.scrollBy({ left: dir * step, behavior: "smooth" });
-  }
-
   renderVals() {
     const dark = this.state.navTheme === "dark";
     return {
@@ -679,9 +664,6 @@ class Component extends DCLogic {
       amountRef: (el) => { this._amountEl = el; },
       partnerRef: (el) => { this._partnerEl = el; },
       teamRailRef: (el) => { this._teamRail = el; },
-      // one card + gap per click; scroll-behavior:smooth on the rail does the easing
-      teamPrev: () => this.teamStep(-1),
-      teamNext: () => this.teamStep(1),
       handsRef: (el) => { this._handsEl = el; if (el) { this.onScroll && this.onScroll(); } },
 
       ...(() => {
@@ -717,8 +699,6 @@ class Component extends DCLogic {
       team: [
         { slotId: "p26-team-1", name: "Chanan Fuzailov", role: "CEO & Founder", ph: "Drop a team photo", img: "assets/team-chanan.png", grade: "none", wash: "0", bio: "Founder and chief executive. Built Point26 to move at the speed of business — approvals in hours, funding within a day." },
         { slotId: "p26-team-2", name: "Joe Fuzailov", role: "Chief Risk Officer", ph: "Drop a team photo", img: "assets/team-joe.png", grade: "none", wash: "0", bio: "Capital strategist. Designs revenue-based facilities that flex with your cash flow, never against it." },
-        { slotId: "p26-team-3", name: "Brian Jacobs", role: "Underwriting Lead", ph: "Drop a team photo", img: "assets/team-3.png", grade: "none", wash: "0", bio: "Underwriting lead. Honest assessments, fair terms, no hard credit pulls — a real read on your business." },
-        { slotId: "p26-team-4", name: "Danielle Greenberg", role: "Growth Partner", ph: "Drop a team photo", img: "assets/team-danielle.png", grade: "none", wash: "0", bio: "Growth partner. Pairs ambitious operators with the capital to scale on their own terms." },
       ],
 
       onSubmit: (e) => { e.preventDefault(); },
