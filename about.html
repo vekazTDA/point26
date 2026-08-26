@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NH7TBJ4W');</script>
+<!-- End Google Tag Manager -->
 <link rel="canonical" href="https://point26cap.com/about">
 <meta property="og:url" content="https://point26cap.com/about">
 <link rel="icon" type="image/svg+xml" href="assets/mark-dark.svg">
@@ -13,6 +20,11 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"AboutPage","name":"About Point26 Capital","url":"https://point26cap.com/about","description":"Point26 Capital has funded more than $967MM to over 20,000 partners. Honest assessments, fair terms, and a commitment to your success.","about":{"@id":"https://point26cap.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"About Us","item":"https://point26cap.com/about"}]}]}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7TBJ4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,8 +129,13 @@
     [data-email-block]{ opacity:1 !important; }
     [data-banner-block]{ width:100% !important; max-width:none !important; padding:0 !important; }
     [data-banner-block] > div{ border-radius:0 !important; height:auto !important; min-height:min(78vw,520px) !important; }
-    [data-banner-block] > div > div:last-child{ position:static !important; padding:26vw 6% 44px !important; }
-    [data-banner-block] h2{ font-size:clamp(32px,9vw,64px) !important; }
+    /* This block was position:static so it contributes height and the banner grows to fit it --
+       but static paints BELOW positioned siblings, so the absolutely-positioned video sat on top
+       and "Fast. Fair. Funded." was invisible on mobile. relative keeps it in flow AND lets
+       z-index apply, so it now paints over the video. */
+    [data-banner-block] > div > div:last-child{ position:relative !important; z-index:2 !important; padding:22vw 6% 40px !important; }
+    [data-banner-block] h2{ font-size:clamp(26px,6.6vw,44px) !important; line-height:1.1 !important; }
+    [data-banner-block] > div > div:last-child p{ font-size:13.5px !important; line-height:1.5 !important; margin-top:12px !important; }
     [data-banner-block] p{ opacity:1 !important; }
     [data-email-row]{ padding:6px !important; gap:6px !important; }
     [data-email-row] input{ min-width:0 !important; font-size:15px !important; }

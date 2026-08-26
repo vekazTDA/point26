@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NH7TBJ4W');</script>
+<!-- End Google Tag Manager -->
 <link rel="canonical" href="https://point26cap.com/">
 <meta property="og:url" content="https://point26cap.com/">
 <link rel="icon" type="image/svg+xml" href="assets/mark-dark.svg">
@@ -13,6 +20,11 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"FinancialService","@id":"https://point26cap.com/#org","name":"Point26 Capital","url":"https://point26cap.com","telephone":"+1-718-938-8844","email":"info@point26cap.com","address":{"@type":"PostalAddress","streetAddress":"55 Northern Blvd","addressLocality":"Great Neck","addressRegion":"NY","postalCode":"11021","addressCountry":"US"},"areaServed":{"@type":"Country","name":"United States"},"description":"Revenue-based business funding from $250K to $10MM. Approvals in hours, same-day funding, no hard credit pulls.","slogan":"Fast. Fair. Funded."},{"@type":"Service","name":"Revenue-Based Business Funding","provider":{"@id":"https://point26cap.com/#org"},"description":"Funding from $250K to $10MM based on cash flow rather than collateral, with approvals in hours and same-day funding. Minimum $5MM annual revenue and 600 credit score.","areaServed":{"@type":"Country","name":"United States"},"audience":{"@type":"BusinessAudience","name":"Healthcare and medical practices, e-commerce and retail, restaurants and food service, construction and contractors"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"What we fund","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Operations"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"New locations"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Acquisitions"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Equipment"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Marketing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Expansion"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Strategy"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Inventory"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Tech upgrades"}}]}},{"@type":"WebSite","@id":"https://point26cap.com/#site","url":"https://point26cap.com","name":"Point26 Capital","publisher":{"@id":"https://point26cap.com/#org"}}]}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7TBJ4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -205,8 +217,13 @@
     [data-email-block]{ opacity:1 !important; }
     [data-banner-block]{ width:100% !important; max-width:none !important; padding:0 !important; }
     [data-banner-block] > div{ border-radius:0 !important; height:auto !important; min-height:min(78vw,520px) !important; }
-    [data-banner-block] > div > div:last-child{ position:static !important; padding:26vw 6% 44px !important; }
-    [data-banner-block] h2{ font-size:clamp(32px,9vw,64px) !important; }
+    /* This block was position:static so it contributes height and the banner grows to fit it --
+       but static paints BELOW positioned siblings, so the absolutely-positioned video sat on top
+       and "Fast. Fair. Funded." was invisible on mobile. relative keeps it in flow AND lets
+       z-index apply, so it now paints over the video. */
+    [data-banner-block] > div > div:last-child{ position:relative !important; z-index:2 !important; padding:22vw 6% 40px !important; }
+    [data-banner-block] h2{ font-size:clamp(26px,6.6vw,44px) !important; line-height:1.1 !important; }
+    [data-banner-block] > div > div:last-child p{ font-size:13.5px !important; line-height:1.5 !important; margin-top:12px !important; }
     [data-banner-block] p{ opacity:1 !important; }
     [data-email-row]{ padding:6px !important; gap:6px !important; }
     [data-email-row] input{ min-width:0 !important; font-size:15px !important; }

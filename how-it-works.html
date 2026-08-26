@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NH7TBJ4W');</script>
+<!-- End Google Tag Manager -->
 <link rel="canonical" href="https://point26cap.com/how-it-works">
 <meta property="og:url" content="https://point26cap.com/how-it-works">
 <link rel="icon" type="image/svg+xml" href="assets/mark-dark.svg">
@@ -13,6 +20,11 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"How It Works","url":"https://point26cap.com/how-it-works","description":"Apply, get approved in a few hours, and receive $250K-$10MM in revenue-based capital the same day. Straightforward terms with repayment that moves with your revenue.","isPartOf":{"@id":"https://point26cap.com/#site"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is your funding different from a bank loan?","acceptedAnswer":{"@type":"Answer","text":"Bank loans have rigid payments and slow approvals. We move at the speed of your business, approvals in hours, repayment that moves with your revenue."}},{"@type":"Question","name":"How fast can I get funded?","acceptedAnswer":{"@type":"Answer","text":"Approvals in a few hours. Funding the same day. No waiting weeks for a decision."}},{"@type":"Question","name":"Are there any hidden fees?","acceptedAnswer":{"@type":"Answer","text":"No. Our terms are transparent from the start. You will know exactly what to expect."}},{"@type":"Question","name":"What is the approval process?","acceptedAnswer":{"@type":"Answer","text":"Streamlined application: few hour review, approval, same-day funding. Minimal paperwork, maximum efficiency."}},{"@type":"Question","name":"What revenue does a business need to qualify?","acceptedAnswer":{"@type":"Answer","text":"Minimum $5MM in annual revenue. This ensures we're providing meaningful capital for established, growth-oriented businesses."}},{"@type":"Question","name":"What if I have bad credit?","acceptedAnswer":{"@type":"Answer","text":"We don't lead with credit scores. We look at revenue, cash flow, and business fundamentals. We require a minimum credit score of 600."}},{"@type":"Question","name":"What types of deals do you specialize in?","acceptedAnswer":{"@type":"Answer","text":"Large-ticket funding for high-revenue businesses, including A and B paper turndowns and high-revenue B and C paper deals."}},{"@type":"Question","name":"Do you work with ISOs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our partner program offers top-tier compensation, including payouts on renewals and approvals."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"How It Works","item":"https://point26cap.com/how-it-works"}]}]}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7TBJ4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,7 +93,14 @@
     [data-hiw-copy]{ left:0 !important; right:0 !important; top:14% !important; transform:none !important; max-width:none !important; width:100% !important; text-align:center !important; padding:0 26px !important; box-sizing:border-box !important; }
     [data-hiw-copy] > p{ font-size:18px !important; font-weight:200 !important; }
     [data-hiw-title]{ font-size:30px !important; line-height:38px !important; margin-top:12px !important; }
-    [data-hiw-portrait]{ -webkit-mask-image:none !important; mask-image:none !important; right:auto !important; left:50% !important; transform:translateX(-50%) !important; bottom:-6% !important; }
+    /* The portrait is a LANDSCAPE image (3280x2234) sized height:112%/width:auto, so its rendered
+       width follows viewport HEIGHT, not width: at 414px it drew 1210px wide with only 34% visible
+       and his eye at 93% of the screen -- hence the cut-off face. translateX percentages resolve
+       against the element's own width, so -64.7% puts the eye (64.7% across the source) at the
+       screen centre, and the smaller height narrows it to ~885px so more of the face fits.
+       The scroll zoom is unaffected: it derives its origin from the portrait's live geometry
+       (offsetLeft + the matrix translate), so it still lands on the eye. */
+    [data-hiw-portrait]{ -webkit-mask-image:none !important; mask-image:none !important; right:auto !important; left:50% !important; transform:translateX(-64.7%) !important; height:82% !important; bottom:-6% !important; }
     [data-hiw-lgrad]{ display:none !important; }
     [data-hiw-dots]{ -webkit-mask-image:radial-gradient(78% 62% at 50% 44%, #000 28%, transparent 82%) !important; mask-image:radial-gradient(78% 62% at 50% 44%, #000 28%, transparent 82%) !important; }
 
@@ -166,8 +185,13 @@
     [data-email-block]{ opacity:1 !important; }
     [data-banner-block]{ width:100% !important; max-width:none !important; padding:0 !important; }
     [data-banner-block] > div{ border-radius:0 !important; height:auto !important; min-height:min(78vw,520px) !important; }
-    [data-banner-block] > div > div:last-child{ position:static !important; padding:26vw 6% 44px !important; }
-    [data-banner-block] h2{ font-size:clamp(32px,9vw,64px) !important; }
+    /* This block was position:static so it contributes height and the banner grows to fit it --
+       but static paints BELOW positioned siblings, so the absolutely-positioned video sat on top
+       and "Fast. Fair. Funded." was invisible on mobile. relative keeps it in flow AND lets
+       z-index apply, so it now paints over the video. */
+    [data-banner-block] > div > div:last-child{ position:relative !important; z-index:2 !important; padding:22vw 6% 40px !important; }
+    [data-banner-block] h2{ font-size:clamp(26px,6.6vw,44px) !important; line-height:1.1 !important; }
+    [data-banner-block] > div > div:last-child p{ font-size:13.5px !important; line-height:1.5 !important; margin-top:12px !important; }
     [data-banner-block] p{ opacity:1 !important; }
     [data-email-row]{ padding:6px !important; gap:6px !important; }
     [data-email-row] input{ min-width:0 !important; font-size:15px !important; }
@@ -299,7 +323,7 @@
             <span style="font-size:18px;font-weight:300;color:#003238;">Get Funded Now</span>
           </a>
           <div style="position:absolute;left:56%;top:50%;transform:translateY(-50%);z-index:2;">
-            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#00A1AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5a5 5 0 1 0-4.9-6 5 5 0 0 0 .4 6L3 17l3-.6a5 5 0 0 0 2.5.1"></path><path d="M14.5 17.5a4.5 4.5 0 1 1 4.4-5.4 4.5 4.5 0 0 1-.3 5.4L20 20l-3-.6a4.5 4.5 0 0 1-2.5.1"></path></svg>
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#00A1AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"></path><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path></svg>
             <h3 style="margin:14px 0 0;font-size:30px;font-weight:400;text-transform:capitalize;color:#003238;">Let's Talk</h3>
             <p style="margin:10px 0 0;font-size:18px;font-weight:300;text-transform:capitalize;color:#003238;">Tell Us About Your Business.</p>
           </div>
@@ -325,7 +349,7 @@
             <span style="font-size:18px;font-weight:300;color:#003238;">Get Funded Now</span>
           </a>
           <div style="position:absolute;left:56%;top:50%;transform:translateY(-50%);z-index:2;">
-            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#24AFB7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6l2.7 5.8 6.3.7-4.7 4.3 1.3 6.2L12 20.4 6.1 23.6l1.3-6.2L2.7 9.1l6.3-.7z"></path></svg>
+            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#24AFB7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
             <h3 style="margin:14px 0 0;font-size:30px;font-weight:400;text-transform:capitalize;color:#003238;">Use It</h3>
             <p style="margin:10px 0 0;font-size:18px;font-weight:300;text-transform:capitalize;color:#003238;">Use The Capital For Anything You Need.</p>
           </div>
@@ -346,7 +370,7 @@
           <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,9,11,.5) 0%,rgba(5,9,11,.32) 28%,rgba(3,7,9,.98) 100%);"></div>
           <div style="position:absolute;top:16px;left:16px;display:inline-flex;align-items:center;background:rgba(0,50,56,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:13px;font-weight:400;letter-spacing:.04em;padding:8px 14px;border-radius:30px;">Step 01</div>
           <div style="position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5a5 5 0 1 0-4.9-6 5 5 0 0 0 .4 6L3 17l3-.6a5 5 0 0 0 2.5.1"></path><path d="M14.5 17.5a4.5 4.5 0 1 1 4.4-5.4 4.5 4.5 0 0 1-.3 5.4L20 20l-3-.6a4.5 4.5 0 0 1-2.5.1"></path></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"></path><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path></svg>
           </div>
           <div style="position:absolute;left:0;right:0;bottom:0;padding:22px 22px 24px;">
             <h3 style="margin:0;font-size:30px;font-weight:400;line-height:1.04;color:#fff;text-transform:capitalize;">Let's Talk</h3>
@@ -380,7 +404,7 @@
           <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,9,11,.5) 0%,rgba(5,9,11,.32) 28%,rgba(3,7,9,.98) 100%);"></div>
           <div style="position:absolute;top:16px;left:16px;display:inline-flex;align-items:center;background:rgba(0,50,56,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:13px;font-weight:400;letter-spacing:.04em;padding:8px 14px;border-radius:30px;">Step 03</div>
           <div style="position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6l2.7 5.8 6.3.7-4.7 4.3 1.3 6.2L12 20.4 6.1 23.6l1.3-6.2L2.7 9.1l6.3-.7z"></path></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
           </div>
           <div style="position:absolute;left:0;right:0;bottom:0;padding:22px 22px 24px;">
             <h3 style="margin:0;font-size:30px;font-weight:400;line-height:1.04;color:#fff;text-transform:capitalize;">Use It</h3>

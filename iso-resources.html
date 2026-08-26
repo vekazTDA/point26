@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NH7TBJ4W');</script>
+<!-- End Google Tag Manager -->
 <link rel="canonical" href="https://point26cap.com/iso-resources">
 <meta property="og:url" content="https://point26cap.com/iso-resources">
 <link rel="icon" type="image/svg+xml" href="assets/mark-dark.svg">
@@ -13,6 +20,11 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"ISO Resources","url":"https://point26cap.com/iso-resources","description":"Join the Point26 Capital ISO network. Top-tier compensation including payouts on renewals and approvals, dedicated partner support, and same-day approvals.","isPartOf":{"@id":"https://point26cap.com/#site"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"ISO Resources","item":"https://point26cap.com/iso-resources"}]}]}</script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH7TBJ4W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,8 +140,13 @@
     [data-email-block]{ opacity:1 !important; }
     [data-banner-block]{ width:100% !important; max-width:none !important; padding:0 !important; }
     [data-banner-block] > div{ border-radius:0 !important; height:auto !important; min-height:min(78vw,520px) !important; }
-    [data-banner-block] > div > div:last-child{ position:static !important; padding:26vw 6% 44px !important; }
-    [data-banner-block] h2{ font-size:clamp(32px,9vw,64px) !important; }
+    /* This block was position:static so it contributes height and the banner grows to fit it --
+       but static paints BELOW positioned siblings, so the absolutely-positioned video sat on top
+       and "Fast. Fair. Funded." was invisible on mobile. relative keeps it in flow AND lets
+       z-index apply, so it now paints over the video. */
+    [data-banner-block] > div > div:last-child{ position:relative !important; z-index:2 !important; padding:22vw 6% 40px !important; }
+    [data-banner-block] h2{ font-size:clamp(26px,6.6vw,44px) !important; line-height:1.1 !important; }
+    [data-banner-block] > div > div:last-child p{ font-size:13.5px !important; line-height:1.5 !important; margin-top:12px !important; }
     [data-banner-block] p{ opacity:1 !important; }
     [data-email-row]{ padding:6px !important; gap:6px !important; }
     [data-email-row] input{ min-width:0 !important; font-size:15px !important; }
@@ -242,7 +259,7 @@
           </div>
           <p style="margin:12px 0 0;font-size:13px;font-weight:300;color:rgba(255,255,255,.5);">Step {{ mStepNum }} of {{ mTotal }} &middot; {{ mTimeLabel }}</p>
 
-          <button onClick="{{ onMNext }}" style="margin-top:24px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#003238;border:none;border-radius:40px;padding:18px 24px;font-family:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:transform .15s ease,background .2s ease;" style-hover="transform:translateY(-1px);background:#eafafa;">{{ mCta }}</button>
+          <p style="margin:14px 0 0;font-size:14px;font-weight:300;color:#ff8f85;text-align:center;{{ mErrStepStyle }}">Please complete this step to continue.</p><p style="margin:14px 0 0;font-size:14px;font-weight:300;color:#ff8f85;text-align:center;{{ mErrEmailStyle }}">Please enter a valid email address.</p><button onClick="{{ onMNext }}" style="margin-top:24px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#003238;border:none;border-radius:40px;padding:18px 24px;font-family:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:transform .15s ease,background .2s ease;" style-hover="transform:translateY(-1px);background:#eafafa;">{{ mCta }}</button>
           <sc-if value="{{ mBack }}" hint-placeholder-val="{{ false }}">
             <button onClick="{{ onMBack }}" style="margin-top:14px;width:100%;background:transparent;border:none;color:rgba(255,255,255,.6);font-family:inherit;font-size:14px;font-weight:300;cursor:pointer;">&larr; Back</button>
           </sc-if>
@@ -314,7 +331,7 @@
           </div>
 
           <div style="display:flex;justify-content:flex-end;align-items:center;gap:18px;padding-top:6px;">
-            <p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrStyle }}">Please upload the required documents.</p>
+            <p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrFieldsStyle }}">Please fill in your name, email and phone number.</p><p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrEmailStyle }}">Please enter a valid email address.</p><p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrFileStyle }}">Please upload the required documents.</p>
             <button type="submit" style="display:inline-flex;align-items:center;gap:13px;background:transparent;cursor:pointer;font-family:inherit;border:0.6px solid #FDFDFD;border-radius:41px;padding:12px 18px 12px 12px;transition:background .25s ease;" style-hover="background:rgba(255,255,255,.08);">
               <span style="display:flex;align-items:center;justify-content:center;width:41px;height:24px;border:0.5px solid #00F1FF;border-radius:15px;color:#00F1FF;font-size:15px;">→</span>
               <span style="font-size:18px;font-weight:300;text-transform:capitalize;color:#fff;">Submit</span>
@@ -490,7 +507,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { fileLabel: "Upload an image or a PDF", step: 0, vals: {}, done: false, isoDone: false, isoErr: false, subscribed: false, subErr: false };
+  state = { fileLabel: "Upload an image or a PDF", step: 0, vals: {}, done: false, mErr: "", isoDone: false, isoErr: "", subscribed: false, subErr: false };
 
   componentDidMount() {
     // trigger the hero load-in via inline styles (always beats scoped CSS); fallback guarantees visibility
@@ -591,9 +608,9 @@ class Component extends DCLogic {
       };
     })();
     const mSteps = [
-      { key: "name", title: "Let's get started!", label: "Full name", type: "text", ph: "Your full name", hint: "First, what's your name?" },
-      { key: "phone", title: "What's your number?", label: "Phone", type: "tel", ph: "(650) 213-7390", hint: "We'll text you a confirmation code.", country: true },
-      { key: "email", title: "And your email?", label: "Email", type: "email", ph: "you@company.com", hint: "Where should we send your approval?" },
+      { key: "name", title: "Let's get started!", label: "Full name", type: "text", ph: "Your full name", hint: "First, what's your name?", req: true },
+      { key: "phone", title: "What's your number?", label: "Phone", type: "tel", ph: "(650) 213-7390", hint: "We'll text you a confirmation code.", country: true, req: true },
+      { key: "email", title: "And your email?", label: "Email", type: "email", ph: "you@company.com", hint: "Where should we send your approval?", req: true },
       { key: "company", title: "Tell us your company", label: "Company name", type: "text", ph: "Your company", hint: "What's your company called?" },
       { key: "ctype", title: "What do you do?", label: "Company type", type: "text", ph: "e.g. ISO, broker, agency", hint: "What kind of business do you run?" },
       { key: "docs", title: "Almost there!", label: "Documents", type: "file", ph: "", hint: "Last step — upload your documents to finish.", upload: true },
@@ -619,27 +636,74 @@ class Component extends DCLogic {
       mCta: ms < mSteps.length - 1 ? "Continue" : "Submit Application",
       mBack: ms > 0 && !this.state.done,
       mDone: !!this.state.done,
+      mErrStepStyle: this.state.mErr === "step" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
+      mErrEmailStyle: this.state.mErr === "email" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
       mDots: mSteps.map((_, i) => ({ w: i === ms ? "26px" : "6px", bg: i <= ms ? "#01C4CF" : "rgba(255,255,255,.25)" })),
       onMField: (e) => { const v = e.target.value; this.setState((st) => ({ vals: { ...st.vals, [mcur.key]: v } })); },
-      onMFile: (e) => { const f = e && e.target && e.target.files; if (f && f.length) this.setState({ fileLabel: f.length === 1 ? f[0].name : f.length + " files selected" }); },
-      onMNext: () => { if (ms < mSteps.length - 1) this.setState({ step: ms + 1, done: false }); else this.setState({ done: true }); },
-      onMBack: () => this.setState((st) => ({ step: Math.max(0, (st.step || 0) - 1), done: false })),
+      onMFile: (e) => { const f = e && e.target && e.target.files; this._mFiles = (f && f.length) ? f : null; if (f && f.length) this.setState({ fileLabel: f.length === 1 ? f[0].name : f.length + " files selected" }); },
+      onMNext: () => {
+        const cur = (mvals[mcur.key] || "").trim();
+        if (mcur.upload) {
+          if (!this._mFiles || !this._mFiles.length) { this.setState({ mErr: "step" }); return; }
+        } else if (mcur.req && !cur) {
+          this.setState({ mErr: "step" }); return;
+        } else if (mcur.key === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(cur)) {
+          this.setState({ mErr: "email" }); return;
+        }
+        if (ms < mSteps.length - 1) { this.setState({ step: ms + 1, done: false, mErr: "" }); return; }
+        // the mobile flow previously just showed "Thank you!" without ever sending anything
+        this.netlifyPost("iso-application", {
+          name: mvals.name || "",
+          email: mvals.email || "",
+          phone: mvals.phone || "",
+          company: mvals.company || "",
+          companyType: mvals.ctype || "",
+          documents: this._mFiles ? Array.prototype.map.call(this._mFiles, (f) => f.name).join(", ") : "",
+        });
+        this.setState({ done: true, mErr: "" });
+      },
+      onMBack: () => this.setState((st) => ({ step: Math.max(0, (st.step || 0) - 1), done: false, mErr: "" })),
       isoFormRef: (el) => { this._isoFormEl = el; },
       onSubmit: (e) => {
         if (e && e.preventDefault) e.preventDefault();
-        const files = this._docsEl && this._docsEl.files;
-        if (!files || !files.length) { this.setState({ isoErr: true }); return; }
-        const data = {};
         const root = this._isoFormEl;
+        const val = (n) => {
+          const el = root && root.querySelector('[name="' + n + '"]');
+          return ((el && el.value) || "").trim();
+        };
+        // The markup marks name/email/phone as required, but the renderer strips the
+        // attribute before it reaches the DOM, so the browser never enforces it and
+        // checkValidity() passes on an empty form. Check them here instead.
+        const fail = (which) => this.setState({ isoErr: which });
+        const missing = [
+          ["name", "your name"],
+          ["email", "your email"],
+          ["phone", "your phone number"],
+        ].filter(([n]) => !val(n)).map(([, label]) => label);
+        if (missing.length) { fail("fields"); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email"))) { fail("email"); return; }
+        // read the live input out of the form rather than the cached ref: a re-render can
+        // replace the element, leaving this._docsEl detached and reporting zero files
+        const fileEl = (root && root.querySelector('input[type="file"]')) || this._docsEl;
+        const files = fileEl && fileEl.files;
+        if (!files || !files.length) { fail("file"); return; }
+        const data = {};
         if (root) root.querySelectorAll("[name]").forEach((el) => { data[el.name] = el.value || ""; });
         data.documents = Array.prototype.map.call(files, (f) => f.name).join(", ");
         this.netlifyPost("iso-application", data);
-        this.setState({ isoErr: false, isoDone: true });
+        this.setState({ isoErr: "", isoDone: true });
       },
-      isoErrStyle: this.state.isoErr ? "opacity:1;" : "opacity:0;",
+      isoErrFieldsStyle: this.state.isoErr === "fields" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
+      isoErrEmailStyle: this.state.isoErr === "email" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
+      isoErrFileStyle: this.state.isoErr === "file" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
       isoDoneStyle: this.state.isoDone ? "" : "display:none;",
       isoFormStyle: this.state.isoDone ? "display:none;" : "",
-      isoReset: () => this.setState({ isoDone: false, isoErr: false, fileLabel: "Upload an image or a PDF" }),
+      isoReset: () => {
+        const root = this._isoFormEl;
+        if (root && root.reset) root.reset();
+        if (this._docsEl) this._docsEl.value = "";
+        this.setState({ isoDone: false, isoErr: "", fileLabel: "Upload an image or a PDF" });
+      },
       docsRef: (el) => { this._docsEl = el; },
       ctypeRef: (el) => { this._ctypeEl = el; },
       formShow: this.state.subscribed ? "display:none;" : "",
