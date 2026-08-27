@@ -331,7 +331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
 
           <div style="display:flex;justify-content:flex-end;align-items:center;gap:18px;padding-top:6px;">
-            <p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrFieldsStyle }}">Please fill in your name, email and phone number.</p><p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrEmailStyle }}">Please enter a valid email address.</p><p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrFileStyle }}">Please upload the required documents.</p>
+            <p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrStyle }}">Please complete the required fields (marked *).</p>
             <button type="submit" style="display:inline-flex;align-items:center;gap:13px;background:transparent;cursor:pointer;font-family:inherit;border:0.6px solid #FDFDFD;border-radius:41px;padding:12px 18px 12px 12px;transition:background .25s ease;" style-hover="background:rgba(255,255,255,.08);">
               <span style="display:flex;align-items:center;justify-content:center;width:41px;height:24px;border:0.5px solid #00F1FF;border-radius:15px;color:#00F1FF;font-size:15px;">→</span>
               <span style="font-size:18px;font-weight:300;text-transform:capitalize;color:#fff;">Submit</span>
@@ -674,28 +674,26 @@ class Component extends DCLogic {
         // The markup marks name/email/phone as required, but the renderer strips the
         // attribute before it reaches the DOM, so the browser never enforces it and
         // checkValidity() passes on an empty form. Check them here instead.
-        const fail = (which) => this.setState({ isoErr: which });
+        const fail = () => this.setState({ isoErr: true });
         const missing = [
           ["name", "your name"],
           ["email", "your email"],
           ["phone", "your phone number"],
         ].filter(([n]) => !val(n)).map(([, label]) => label);
-        if (missing.length) { fail("fields"); return; }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email"))) { fail("email"); return; }
+        if (missing.length) { fail(); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email"))) { fail(); return; }
         // read the live input out of the form rather than the cached ref: a re-render can
         // replace the element, leaving this._docsEl detached and reporting zero files
         const fileEl = (root && root.querySelector('input[type="file"]')) || this._docsEl;
         const files = fileEl && fileEl.files;
-        if (!files || !files.length) { fail("file"); return; }
+        if (!files || !files.length) { fail(); return; }
         const data = {};
         if (root) root.querySelectorAll("[name]").forEach((el) => { data[el.name] = el.value || ""; });
         data.documents = Array.prototype.map.call(files, (f) => f.name).join(", ");
         this.netlifyPost("iso-application", data);
         this.setState({ isoErr: "", isoDone: true });
       },
-      isoErrFieldsStyle: this.state.isoErr === "fields" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
-      isoErrEmailStyle: this.state.isoErr === "email" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
-      isoErrFileStyle: this.state.isoErr === "file" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
+      isoErrStyle: this.state.isoErr ? "opacity:1;" : "opacity:0;",
       isoDoneStyle: this.state.isoDone ? "" : "display:none;",
       isoFormStyle: this.state.isoDone ? "display:none;" : "",
       isoReset: () => {
