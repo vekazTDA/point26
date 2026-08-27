@@ -17,6 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
+<script src="./recaptcha.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"ISO Resources","url":"https://point26cap.com/iso-resources","description":"Join the Point26 Capital ISO network. Top-tier compensation including payouts on renewals and approvals, dedicated partner support, and same-day approvals.","isPartOf":{"@id":"https://point26cap.com/#site"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"ISO Resources","item":"https://point26cap.com/iso-resources"}]}]}</script>
 </head>
 <body>
@@ -259,7 +260,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <p style="margin:12px 0 0;font-size:13px;font-weight:300;color:rgba(255,255,255,.5);">Step {{ mStepNum }} of {{ mTotal }} &middot; {{ mTimeLabel }}</p>
 
-          <p style="margin:14px 0 0;font-size:14px;font-weight:300;color:#ff8f85;text-align:center;{{ mErrStepStyle }}">Please complete this step to continue.</p><p style="margin:14px 0 0;font-size:14px;font-weight:300;color:#ff8f85;text-align:center;{{ mErrEmailStyle }}">Please enter a valid email address.</p><button onClick="{{ onMNext }}" style="margin-top:24px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#003238;border:none;border-radius:40px;padding:18px 24px;font-family:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:transform .15s ease,background .2s ease;" style-hover="transform:translateY(-1px);background:#eafafa;">{{ mCta }}</button>
+          <input name="bot-field" data-bot-field="iso-application" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
+          <sc-if value="{{ mLast }}" hint-placeholder-val="{{ false }}">
+            <div data-recaptcha="iso-application" data-recaptcha-theme="dark" style="margin-top:20px;display:flex;justify-content:center;"></div>
+          </sc-if>
+          <p style="margin:14px 0 0;font-size:14px;font-weight:300;color:#ff8f85;text-align:center;{{ mErrStepStyle }}">Please complete this step to continue.</p><p style="margin:14px 0 0;font-size:14px;font-weight:300;color:#ff8f85;text-align:center;{{ mErrEmailStyle }}">Please enter a valid email address.</p><p style="margin:14px 0 0;font-size:14px;font-weight:300;color:#ff8f85;text-align:center;{{ mErrCaptchaStyle }}">Please confirm you're not a robot.</p><button onClick="{{ onMNext }}" style="margin-top:24px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#003238;border:none;border-radius:40px;padding:18px 24px;font-family:inherit;font-size:17px;font-weight:500;cursor:pointer;transition:transform .15s ease,background .2s ease;" style-hover="transform:translateY(-1px);background:#eafafa;">{{ mCta }}</button>
           <sc-if value="{{ mBack }}" hint-placeholder-val="{{ false }}">
             <button onClick="{{ onMBack }}" style="margin-top:14px;width:100%;background:transparent;border:none;color:rgba(255,255,255,.6);font-family:inherit;font-size:14px;font-weight:300;cursor:pointer;">&larr; Back</button>
           </sc-if>
@@ -330,8 +335,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </label>
           </div>
 
+          <input name="bot-field" data-bot-field="iso-application" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
+          <div data-recaptcha="iso-application" data-recaptcha-theme="dark" style="display:flex;justify-content:flex-end;"></div>
           <div style="display:flex;justify-content:flex-end;align-items:center;gap:18px;padding-top:6px;">
-            <p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrStyle }}">Please complete the required fields (marked *).</p>
+            <p style="margin:0;font-size:14px;font-weight:300;color:#ff8f85;{{ isoErrStyle }}">{{ isoErrMsg }}</p>
             <button type="submit" style="display:inline-flex;align-items:center;gap:13px;background:transparent;cursor:pointer;font-family:inherit;border:0.6px solid #FDFDFD;border-radius:41px;padding:12px 18px 12px 12px;transition:background .25s ease;" style-hover="background:rgba(255,255,255,.08);">
               <span style="display:flex;align-items:center;justify-content:center;width:41px;height:24px;border:0.5px solid #00F1FF;border-radius:15px;color:#00F1FF;font-size:15px;">→</span>
               <span style="font-size:18px;font-weight:300;text-transform:capitalize;color:#fff;">Submit</span>
@@ -461,9 +468,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p style="margin:18px auto 0;max-width:440px;font-size:17px;font-weight:300;line-height:1.5;color:#2b5356;">Get funding insights, capital tips, and Point26 updates delivered straight to your inbox.</p>
           <div data-email-row="" style="display:flex;justify-content:center;align-items:center;gap:0;max-width:440px;margin:30px auto 0;border:1px solid rgba(0,50,56,.25);border-radius:60px;padding:6px 6px 6px 24px;background:rgba(255,255,255,.6);{{ formShow }}">
             <input ref="{{ emailRef }}" type="email" placeholder="Enter your email" aria-label="Email address" style="flex:1;min-width:0;background:transparent;border:none;font-size:16px;color:#003238;font-family:inherit;outline:none;">
+            <input name="bot-field" data-bot-field="newsletter" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
             <button onClick="{{ subscribe }}" aria-label="Subscribe" style="flex:none;display:inline-flex;align-items:center;gap:8px;background:#003238;color:#fff;border:none;border-radius:60px;padding:12px 22px;font-size:15px;font-weight:300;cursor:pointer;font-family:inherit;transition:background .25s;" style-hover="background:#01666e;">Subscribe <span style="color:#00F1FF;">&rarr;</span></button>
           </div>
-          <p style="margin:12px 0 0;font-size:14px;font-weight:300;color:#b3261e;{{ subErrStyle }}">Please enter a valid email address.</p>
+          <div data-recaptcha="newsletter" data-recaptcha-theme="light" style="display:flex;justify-content:center;margin:18px auto 0;{{ formShow }}"></div>
+          <p style="margin:12px 0 0;font-size:14px;font-weight:300;color:#b3261e;{{ subErrStyle }}">{{ subErrMsg }}</p>
           <p style="margin:26px auto 0;max-width:460px;font-size:18px;font-weight:400;line-height:1.5;color:#003238;{{ thanksShow }}">Thank you &mdash; you're on the list. Funding insights are on the way.</p>
         </div>
 
@@ -581,8 +590,23 @@ class Component extends DCLogic {
   // Netlify Forms: the live forms are JS-rendered, so they post directly to the static
   // definitions in netlify-forms.html. Fails silently off-Netlify (local preview) so the
   // on-screen confirmation still works.
+  // reCAPTCHA gate. Netlify verifies the token server-side, but it can only reject after the
+  // fact and this UI confirms optimistically, so an unticked or expired box has to be caught
+  // here or the submission is lost behind a "thank you". Empty also covers "the widget never
+  // loaded", which Netlify would reject just the same.
+  captchaOK(formName) {
+    const rc = window.P26Recaptcha;
+    return !!(rc && rc.token(formName));
+  }
   netlifyPost(formName, data) {
-    const body = new URLSearchParams(Object.assign({ "form-name": formName }, data)).toString();
+    // Attached centrally so every caller gets them. These go last so they win over the same
+    // fields picked up incidentally by the forms that harvest [name] out of the DOM.
+    const rc = window.P26Recaptcha;
+    const guard = rc ? { "g-recaptcha-response": rc.token(formName), "bot-field": rc.honeypot(formName) } : {};
+    const body = new URLSearchParams(Object.assign({ "form-name": formName }, data, guard)).toString();
+    // Spend the token now, while the form is still on screen: once the caller flips to its
+    // thank-you state the widget is hidden, and a hidden widget can no longer be found.
+    if (rc) rc.reset(formName);
     try {
       return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body }).catch(() => {});
     } catch (e) { return Promise.resolve(); }
@@ -604,7 +628,7 @@ class Component extends DCLogic {
         emailFade: `opacity:${fade.toFixed(3)};`,
         subFade: `opacity:${(1 - Math.max(0, Math.min(1, p / 0.3))).toFixed(3)};`,
         bannerOuter: `width:100%;max-width:${(1648 + e * 4000).toFixed(0)}px;padding:0 ${(40 * (1 - e)).toFixed(0)}px;`,
-        bannerInner: `border-radius:${(34 * (1 - e)).toFixed(0)}px;height:calc(${(1 - e).toFixed(3)} * min(46vw, 620px) + ${e.toFixed(3)} * 100vh);max-height:none;`,
+        bannerInner: `border-radius:${(34 * (1 - e)).toFixed(0)}px;height:calc(${(1 - e).toFixed(3)} * min(46vw, 620px, 52vh) + ${e.toFixed(3)} * 100vh);max-height:none;`,
       };
     })();
     const mSteps = [
@@ -634,10 +658,12 @@ class Component extends DCLogic {
       mTotal: mSteps.length,
       mTimeLabel: "about " + Math.max(1, Math.ceil((mSteps.length - ms) * 15 / 60)) + " min left",
       mCta: ms < mSteps.length - 1 ? "Continue" : "Submit Application",
+      mLast: ms === mSteps.length - 1,
       mBack: ms > 0 && !this.state.done,
       mDone: !!this.state.done,
       mErrStepStyle: this.state.mErr === "step" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
       mErrEmailStyle: this.state.mErr === "email" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
+      mErrCaptchaStyle: this.state.mErr === "captcha" ? "opacity:1;" : "opacity:0;position:absolute;pointer-events:none;",
       mDots: mSteps.map((_, i) => ({ w: i === ms ? "26px" : "6px", bg: i <= ms ? "#01C4CF" : "rgba(255,255,255,.25)" })),
       onMField: (e) => { const v = e.target.value; this.setState((st) => ({ vals: { ...st.vals, [mcur.key]: v } })); },
       onMFile: (e) => { const f = e && e.target && e.target.files; this._mFiles = (f && f.length) ? f : null; if (f && f.length) this.setState({ fileLabel: f.length === 1 ? f[0].name : f.length + " files selected" }); },
@@ -651,6 +677,7 @@ class Component extends DCLogic {
           this.setState({ mErr: "email" }); return;
         }
         if (ms < mSteps.length - 1) { this.setState({ step: ms + 1, done: false, mErr: "" }); return; }
+        if (!this.captchaOK("iso-application")) { this.setState({ mErr: "captcha" }); return; }
         // the mobile flow previously just showed "Thank you!" without ever sending anything
         this.netlifyPost("iso-application", {
           name: mvals.name || "",
@@ -674,7 +701,7 @@ class Component extends DCLogic {
         // The markup marks name/email/phone as required, but the renderer strips the
         // attribute before it reaches the DOM, so the browser never enforces it and
         // checkValidity() passes on an empty form. Check them here instead.
-        const fail = () => this.setState({ isoErr: true });
+        const fail = () => this.setState({ isoErr: "fields" });
         const missing = [
           ["name", "your name"],
           ["email", "your email"],
@@ -688,12 +715,20 @@ class Component extends DCLogic {
         const files = fileEl && fileEl.files;
         if (!files || !files.length) { fail(); return; }
         const data = {};
-        if (root) root.querySelectorAll("[name]").forEach((el) => { data[el.name] = el.value || ""; });
+        // Skip anything inside the widget: reCAPTCHA injects its own named hidden inputs
+        // (a random "a-xxxx" field plus g-recaptcha-response), which are not form data.
+        // netlifyPost attaches the token itself.
+        if (root) root.querySelectorAll("[name]").forEach((el) => {
+          if (el.closest("[data-recaptcha]")) return;
+          data[el.name] = el.value || "";
+        });
         data.documents = Array.prototype.map.call(files, (f) => f.name).join(", ");
+        if (!this.captchaOK("iso-application")) { this.setState({ isoErr: "captcha" }); return; }
         this.netlifyPost("iso-application", data);
         this.setState({ isoErr: "", isoDone: true });
       },
       isoErrStyle: this.state.isoErr ? "opacity:1;" : "opacity:0;",
+      isoErrMsg: this.state.isoErr === "captcha" ? "Please confirm you're not a robot." : "Please complete the required fields (marked *).",
       isoDoneStyle: this.state.isoDone ? "" : "display:none;",
       isoFormStyle: this.state.isoDone ? "display:none;" : "",
       isoReset: () => {
@@ -707,13 +742,15 @@ class Component extends DCLogic {
       formShow: this.state.subscribed ? "display:none;" : "",
       thanksShow: this.state.subscribed ? "" : "display:none;",
       subErrStyle: this.state.subErr && !this.state.subscribed ? "opacity:1;" : "opacity:0;",
+      subErrMsg: this.state.subErr === "captcha" ? "Please confirm you're not a robot." : "Please enter a valid email address.",
       emailRef: (el) => { this._emailEl = el; },
       subscribe: (e) => {
         if (e && e.preventDefault) e.preventDefault();
         const v = ((this._emailEl && this._emailEl.value) || "").trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { this.setState({ subErr: true }); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { this.setState({ subErr: "email" }); return; }
+        if (!this.captchaOK("newsletter")) { this.setState({ subErr: "captcha" }); return; }
         this.netlifyPost("newsletter", { email: v, page: document.title });
-        this.setState({ subErr: false, subscribed: true });
+        this.setState({ subErr: "", subscribed: true });
       },
       videoRef: (el) => {
         if (!el || this._vinit) return;

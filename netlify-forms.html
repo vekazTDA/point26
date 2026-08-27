@@ -12,10 +12,17 @@
   here once with the exact field names the live forms post. Do not delete this file — without
   it Netlify returns "form not found" on submit. This page is noindex and unlinked.
 
+  data-netlify-recaptcha="true" marks each form as reCAPTCHA-protected, so Netlify rejects
+  any submission without a valid g-recaptcha-response. We supply our own keys rather than
+  Netlify's, because Netlify can only inject a widget into HTML it serves and these forms are
+  built at runtime — so the pages render the widget themselves (recaptcha.js) and attach the
+  token. The attribute belongs on the form and nowhere else for custom keys; Netlify reads
+  SITE_RECAPTCHA_KEY / SITE_RECAPTCHA_SECRET from the site's environment variables.
+
   Submissions appear under: Netlify site → Forms → (contact | iso-application | newsletter)
 -->
 
-<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form name="contact" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="contact">
   <input type="text" name="bot-field">
   <input type="text" name="intent">
@@ -28,7 +35,7 @@
   <textarea name="message"></textarea>
 </form>
 
-<form name="iso-application" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form name="iso-application" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="iso-application">
   <input type="text" name="bot-field">
   <input type="text" name="name">
@@ -39,7 +46,7 @@
   <textarea name="message"></textarea>
 </form>
 
-<form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form name="newsletter" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="newsletter">
   <input type="text" name="bot-field">
   <input type="email" name="email">

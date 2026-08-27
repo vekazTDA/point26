@@ -17,6 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
+<script src="./recaptcha.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"FinancialService","@id":"https://point26cap.com/#org","name":"Point26 Capital","url":"https://point26cap.com","telephone":"+1-718-938-8844","email":"info@point26cap.com","address":{"@type":"PostalAddress","streetAddress":"55 Northern Blvd","addressLocality":"Great Neck","addressRegion":"NY","postalCode":"11021","addressCountry":"US"},"areaServed":{"@type":"Country","name":"United States"},"description":"Revenue-based business funding from $250K to $10MM. Approvals in hours, same-day funding, no hard credit pulls.","slogan":"Fast. Fair. Funded."},{"@type":"Service","name":"Revenue-Based Business Funding","provider":{"@id":"https://point26cap.com/#org"},"description":"Funding from $250K to $10MM based on cash flow rather than collateral, with approvals in hours and same-day funding. Minimum $5MM annual revenue and 600 credit score.","areaServed":{"@type":"Country","name":"United States"},"audience":{"@type":"BusinessAudience","name":"Healthcare and medical practices, e-commerce and retail, restaurants and food service, construction and contractors"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"What we fund","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Operations"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"New locations"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Acquisitions"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Equipment"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Marketing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Expansion"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Strategy"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Inventory"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Tech upgrades"}}]}},{"@type":"WebSite","@id":"https://point26cap.com/#site","url":"https://point26cap.com","name":"Point26 Capital","publisher":{"@id":"https://point26cap.com/#org"}}]}</script>
 </head>
 <body>
@@ -207,7 +208,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      the reveal. 97vh-261px keeps the same 24px breathing room; inert above ~908px tall, where
      min() still resolves to 620px. Widths <=1100px already unstick the stage entirely, below. */
   @media (min-width: 1101px) and (max-height: 900px){
-    [data-banner-block] > div{ height:min(46vw, 620px, calc(97vh - 261px)) !important; }
+    [data-banner-block] > div{ height:min(46vw, 620px, calc(97vh - 357px)) !important; }
   }
   /* footer / email-signup layout for narrow desktop + tablet (fixes the banner covering the signup) */
   @media (max-width: 1100px){
@@ -481,9 +482,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
         <div data-email-row="" style="display:flex;justify-content:center;align-items:center;gap:0;max-width:440px;margin:30px auto 0;border:1px solid rgba(0,50,56,.25);border-radius:60px;padding:6px 6px 6px 24px;background:rgba(255,255,255,.6);">
           <input ref="{{ emailRef }}" type="email" placeholder="Enter your email" aria-label="Email address" style="flex:1;min-width:0;background:transparent;border:none;font-size:16px;color:#003238;font-family:inherit;outline:none;">
+          <input name="bot-field" data-bot-field="newsletter" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
           <button onClick="{{ subscribe }}" aria-label="Subscribe" style="flex:none;display:inline-flex;align-items:center;gap:8px;background:#003238;color:#fff;border:none;border-radius:60px;padding:12px 22px;font-size:15px;font-weight:300;cursor:pointer;font-family:inherit;transition:background .25s;" style-hover="background:#01666e;">Subscribe <span style="color:#00F1FF;">→</span></button>
         </div>
-        <p style="margin:12px 0 0;font-size:14px;font-weight:300;color:#b3261e;{{ subErrStyle }}">Please enter a valid email address.</p>
+        <div data-recaptcha="newsletter" data-recaptcha-theme="light" style="display:flex;justify-content:center;margin:18px auto 0;"></div>
+        <p style="margin:12px 0 0;font-size:14px;font-weight:300;color:#b3261e;{{ subErrStyle }}">{{ subErrMsg }}</p>
       </sc-if>
     </div>
 
@@ -798,8 +801,23 @@ class Component extends DCLogic {
   // Netlify Forms: the live forms are JS-rendered, so they post directly to the static
   // definitions in netlify-forms.html. Fails silently off-Netlify (local preview) so the
   // on-screen confirmation still works.
+  // reCAPTCHA gate. Netlify verifies the token server-side, but it can only reject after the
+  // fact and this UI confirms optimistically, so an unticked or expired box has to be caught
+  // here or the submission is lost behind a "thank you". Empty also covers "the widget never
+  // loaded", which Netlify would reject just the same.
+  captchaOK(formName) {
+    const rc = window.P26Recaptcha;
+    return !!(rc && rc.token(formName));
+  }
   netlifyPost(formName, data) {
-    const body = new URLSearchParams(Object.assign({ "form-name": formName }, data)).toString();
+    // Attached centrally so every caller gets them. These go last so they win over the same
+    // fields picked up incidentally by the forms that harvest [name] out of the DOM.
+    const rc = window.P26Recaptcha;
+    const guard = rc ? { "g-recaptcha-response": rc.token(formName), "bot-field": rc.honeypot(formName) } : {};
+    const body = new URLSearchParams(Object.assign({ "form-name": formName }, data, guard)).toString();
+    // Spend the token now, while the form is still on screen: once the caller flips to its
+    // thank-you state the widget is hidden, and a hidden widget can no longer be found.
+    if (rc) rc.reset(formName);
     try {
       return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body }).catch(() => {});
     } catch (e) { return Promise.resolve(); }
@@ -916,13 +934,15 @@ class Component extends DCLogic {
       subscribed: !!this.state.subscribed,
       notSubscribed: !this.state.subscribed,
       subErrStyle: this.state.subErr ? "opacity:1;" : "opacity:0;",
+      subErrMsg: this.state.subErr === "captcha" ? "Please confirm you're not a robot." : "Please enter a valid email address.",
       emailRef: (el) => { this._emailEl = el; },
       subscribe: (e) => {
         if (e && e.preventDefault) e.preventDefault();
         const v = (this._emailEl && this._emailEl.value || "").trim();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { this.setState({ subErr: true }); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { this.setState({ subErr: "email" }); return; }
+        if (!this.captchaOK("newsletter")) { this.setState({ subErr: "captcha" }); return; }
         this.netlifyPost("newsletter", { email: v, page: document.title });
-        this.setState({ subErr: false, subscribed: true });
+        this.setState({ subErr: "", subscribed: true });
       },
       prev: () => this.setState((s) => ({ tIndex: Math.max(0, s.tIndex - 1) })),
       next: () => this.setState((s) => ({ tIndex: Math.min(maxIndex, s.tIndex + 1) })),
