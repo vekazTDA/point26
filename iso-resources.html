@@ -18,6 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
 <script src="./recaptcha.js"></script>
+<script src="./attribution.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"ISO Resources","url":"https://point26cap.com/iso-resources","description":"Join the Point26 Capital ISO network. Top-tier compensation including payouts on renewals and approvals, dedicated partner support, and same-day approvals.","isPartOf":{"@id":"https://point26cap.com/#site"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"ISO Resources","item":"https://point26cap.com/iso-resources"}]}]}</script>
 </head>
 <body>
@@ -325,7 +326,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
 
           <div>
-            <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:14px;">Upload Required Documents*</label>
+            <label style="display:block;font-size:18.8px;font-weight:300;text-transform:capitalize;color:rgba(255,255,255,.48);margin-bottom:14px;">Upload Documents (optional)</label>
             <label style="position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;border:1px dashed rgba(255,255,255,.6);border-radius:6px;padding:30px 20px;cursor:pointer;transition:background .25s ease,border-color .25s ease;" style-hover="background:rgba(255,255,255,.04);border-color:rgba(1,196,207,.7);">
               <input ref="{{ docsRef }}" type="file" multiple="" onChange="{{ onFile }}" style="position:absolute;inset:0;opacity:0;cursor:pointer;">
               <p style="margin:0;font-size:16px;font-weight:300;line-height:1.5;color:#fff;">Driver's License&nbsp; |&nbsp; Voided Check<br>Signed ISO Contract&nbsp; |&nbsp; W-9 Form</p>
@@ -603,7 +604,9 @@ class Component extends DCLogic {
     // fields picked up incidentally by the forms that harvest [name] out of the DOM.
     const rc = window.P26Recaptcha;
     const guard = rc ? { "g-recaptcha-response": rc.token(formName), "bot-field": rc.honeypot(formName) } : {};
-    const body = new URLSearchParams(Object.assign({ "form-name": formName }, data, guard)).toString();
+    // Where the lead came from, captured on their first page of the session.
+    const attr = window.P26Attribution ? window.P26Attribution.fields() : {};
+    const body = new URLSearchParams(Object.assign({ "form-name": formName }, attr, data, guard)).toString();
     // Spend the token now, while the form is still on screen: once the caller flips to its
     // thank-you state the widget is hidden, and a hidden widget can no longer be found.
     if (rc) rc.reset(formName);
@@ -637,7 +640,7 @@ class Component extends DCLogic {
       { key: "email", title: "And your email?", label: "Email", type: "email", ph: "you@company.com", hint: "Where should we send your approval?", req: true },
       { key: "company", title: "Tell us your company", label: "Company name", type: "text", ph: "Your company", hint: "What's your company called?" },
       { key: "ctype", title: "What do you do?", label: "Company type", type: "text", ph: "e.g. ISO, broker, agency", hint: "What kind of business do you run?" },
-      { key: "docs", title: "Almost there!", label: "Documents", type: "file", ph: "", hint: "Last step — upload your documents to finish.", upload: true },
+      { key: "docs", title: "Almost there!", label: "Documents", type: "file", ph: "", hint: "Last step — add your documents if you have them.", upload: true },
     ];
     const ms = this.state.step || 0;
     const mcur = mSteps[ms];
@@ -670,7 +673,7 @@ class Component extends DCLogic {
       onMNext: () => {
         const cur = (mvals[mcur.key] || "").trim();
         if (mcur.upload) {
-          if (!this._mFiles || !this._mFiles.length) { this.setState({ mErr: "step" }); return; }
+          // documents are optional — nothing to validate on this step
         } else if (mcur.req && !cur) {
           this.setState({ mErr: "step" }); return;
         } else if (mcur.key === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(cur)) {
@@ -713,7 +716,6 @@ class Component extends DCLogic {
         // replace the element, leaving this._docsEl detached and reporting zero files
         const fileEl = (root && root.querySelector('input[type="file"]')) || this._docsEl;
         const files = fileEl && fileEl.files;
-        if (!files || !files.length) { fail(); return; }
         const data = {};
         // Skip anything inside the widget: reCAPTCHA injects its own named hidden inputs
         // (a random "a-xxxx" field plus g-recaptcha-response), which are not form data.
@@ -722,7 +724,8 @@ class Component extends DCLogic {
           if (el.closest("[data-recaptcha]")) return;
           data[el.name] = el.value || "";
         });
-        data.documents = Array.prototype.map.call(files, (f) => f.name).join(", ");
+        // documents are optional, so this can legitimately be an empty FileList
+        data.documents = files && files.length ? Array.prototype.map.call(files, (f) => f.name).join(", ") : "";
         if (!this.captchaOK("iso-application")) { this.setState({ isoErr: "captcha" }); return; }
         this.netlifyPost("iso-application", data);
         this.setState({ isoErr: "", isoDone: true });
