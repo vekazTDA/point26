@@ -18,6 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
 <script src="./recaptcha.js"></script>
+<script src="./attribution.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","name":"How It Works","url":"https://point26cap.com/how-it-works","description":"Apply, get approved in a few hours, and receive $250K-$10MM in revenue-based capital the same day. Straightforward terms with repayment that moves with your revenue.","isPartOf":{"@id":"https://point26cap.com/#site"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is your funding different from a bank loan?","acceptedAnswer":{"@type":"Answer","text":"Bank loans have rigid payments and slow approvals. We move at the speed of your business, approvals in hours, repayment that moves with your revenue."}},{"@type":"Question","name":"How fast can I get funded?","acceptedAnswer":{"@type":"Answer","text":"Approvals in a few hours. Funding the same day. No waiting weeks for a decision."}},{"@type":"Question","name":"Are there any hidden fees?","acceptedAnswer":{"@type":"Answer","text":"No. Our terms are transparent from the start. You will know exactly what to expect."}},{"@type":"Question","name":"What is the approval process?","acceptedAnswer":{"@type":"Answer","text":"Streamlined application: few hour review, approval, same-day funding. Minimal paperwork, maximum efficiency."}},{"@type":"Question","name":"What revenue does a business need to qualify?","acceptedAnswer":{"@type":"Answer","text":"Minimum $5MM in annual revenue. This ensures we're providing meaningful capital for established, growth-oriented businesses."}},{"@type":"Question","name":"What if I have bad credit?","acceptedAnswer":{"@type":"Answer","text":"We don't lead with credit scores. We look at revenue, cash flow, and business fundamentals. We require a minimum credit score of 600."}},{"@type":"Question","name":"What types of deals do you specialize in?","acceptedAnswer":{"@type":"Answer","text":"Large-ticket funding for high-revenue businesses, including A and B paper turndowns and high-revenue B and C paper deals."}},{"@type":"Question","name":"Do you work with ISOs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Our partner program offers top-tier compensation, including payouts on renewals and approvals."}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"How It Works","item":"https://point26cap.com/how-it-works"}]}]}</script>
 </head>
 <body>
@@ -1028,7 +1029,9 @@ class Component extends DCLogic {
     // fields picked up incidentally by the forms that harvest [name] out of the DOM.
     const rc = window.P26Recaptcha;
     const guard = rc ? { "g-recaptcha-response": rc.token(formName), "bot-field": rc.honeypot(formName) } : {};
-    const body = new URLSearchParams(Object.assign({ "form-name": formName }, data, guard)).toString();
+    // Where the lead came from, captured on their first page of the session.
+    const attr = window.P26Attribution ? window.P26Attribution.fields() : {};
+    const body = new URLSearchParams(Object.assign({ "form-name": formName }, attr, data, guard)).toString();
     // Spend the token now, while the form is still on screen: once the caller flips to its
     // thank-you state the widget is hidden, and a hidden widget can no longer be found.
     if (rc) rc.reset(formName);

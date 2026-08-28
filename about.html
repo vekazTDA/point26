@@ -18,6 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
 <script src="./recaptcha.js"></script>
+<script src="./attribution.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"AboutPage","name":"About Point26 Capital","url":"https://point26cap.com/about","description":"Point26 Capital has funded more than $967MM to over 20,000 partners. Honest assessments, fair terms, and a commitment to your success.","about":{"@id":"https://point26cap.com/#org"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"About Us","item":"https://point26cap.com/about"}]}]}</script>
 </head>
 <body>
@@ -653,7 +654,9 @@ class Component extends DCLogic {
     // fields picked up incidentally by the forms that harvest [name] out of the DOM.
     const rc = window.P26Recaptcha;
     const guard = rc ? { "g-recaptcha-response": rc.token(formName), "bot-field": rc.honeypot(formName) } : {};
-    const body = new URLSearchParams(Object.assign({ "form-name": formName }, data, guard)).toString();
+    // Where the lead came from, captured on their first page of the session.
+    const attr = window.P26Attribution ? window.P26Attribution.fields() : {};
+    const body = new URLSearchParams(Object.assign({ "form-name": formName }, attr, data, guard)).toString();
     // Spend the token now, while the form is still on screen: once the caller flips to its
     // thank-you state the widget is hidden, and a hidden widget can no longer be found.
     if (rc) rc.reset(formName);
