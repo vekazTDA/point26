@@ -821,9 +821,15 @@ class Component extends DCLogic {
     // Spend the token now, while the form is still on screen: once the caller flips to its
     // thank-you state the widget is hidden, and a hidden widget can no longer be found.
     if (rc) rc.reset(formName);
+    // Resolves true only if Netlify actually accepted the submission. It rejects anything
+    // that fails reCAPTCHA — including a page running pre-reCAPTCHA cached code — and the
+    // old fire-and-forget version showed a thank-you regardless, so a rejected lead
+    // vanished with nobody any the wiser.
     try {
-      return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body }).catch(() => {});
-    } catch (e) { return Promise.resolve(); }
+      return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
+        .then((res) => !!res && res.ok)
+        .catch(() => false);
+    } catch (e) { return Promise.resolve(false); }
   }
 
   renderVals() {
@@ -937,15 +943,16 @@ class Component extends DCLogic {
       subscribed: !!this.state.subscribed,
       notSubscribed: !this.state.subscribed,
       subErrStyle: this.state.subErr ? "opacity:1;" : "opacity:0;",
-      subErrMsg: this.state.subErr === "captcha" ? "Please confirm you're not a robot." : "Please enter a valid email address.",
+      subErrMsg: this.state.subErr === "captcha" ? "Please confirm you're not a robot." : this.state.subErr === "send" ? "Something went wrong — please refresh the page and try again." : "Please enter a valid email address.",
       emailRef: (el) => { this._emailEl = el; },
       subscribe: (e) => {
         if (e && e.preventDefault) e.preventDefault();
         const v = (this._emailEl && this._emailEl.value || "").trim();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { this.setState({ subErr: "email" }); return; }
         if (!this.captchaOK("newsletter")) { this.setState({ subErr: "captcha" }); return; }
-        this.netlifyPost("newsletter", { email: v, page: document.title });
-        this.setState({ subErr: "", subscribed: true });
+        this.netlifyPost("newsletter", { email: v, page: document.title }).then((ok) => {
+          this.setState(ok ? { subErr: "", subscribed: true } : { subErr: "send" });
+        });
       },
       prev: () => this.setState((s) => ({ tIndex: Math.max(0, s.tIndex - 1) })),
       next: () => this.setState((s) => ({ tIndex: Math.min(maxIndex, s.tIndex + 1) })),
