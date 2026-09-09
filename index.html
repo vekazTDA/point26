@@ -816,6 +816,30 @@ class Component extends DCLogic {
     const rc = window.P26Recaptcha;
     return !!(rc && rc.token(formName));
   }
+  // Tells Google Tag Manager a lead just landed, so GA4 and Ads can credit the campaign
+  // that produced it. Called only from netlifyPost's success branch: these forms confirm in
+  // place instead of redirecting, so there is no thank-you URL for a pageview trigger to
+  // catch, and firing on button click would count spam and reCAPTCHA rejections as
+  // conversions.
+  //
+  // Deliberately carries no name, email or phone. Sending personal data to Google Analytics
+  // breaks their terms and can get the property suspended, and the attribution fields
+  // already identify the campaign, which is the whole point of the event.
+  pushLeadEvent(formName, attr) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      // attr first so our own keys always win if attribution ever grows a clashing field.
+      window.dataLayer.push(Object.assign({}, attr, {
+        event: "generate_lead",
+        form_name: formName,
+        // Newsletter signups fire the same event so none are missed, but are labelled so GTM
+        // can count them separately — they are not sales enquiries.
+        lead_type: formName === "newsletter" ? "newsletter" : "sales_lead",
+      }));
+    } catch (e) {
+      // Analytics must never break a submission that has already succeeded.
+    }
+  }
   netlifyPost(formName, data) {
     // Attached centrally so every caller gets them. These go last so they win over the same
     // fields picked up incidentally by the forms that harvest [name] out of the DOM.
@@ -834,6 +858,7 @@ class Component extends DCLogic {
     try {
       return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
         .then((res) => !!res && res.ok)
+        .then((ok) => { if (ok) this.pushLeadEvent(formName, attr); return ok; })
         .catch(() => false);
     } catch (e) { return Promise.resolve(false); }
   }
