@@ -9,15 +9,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-NH7TBJ4W');</script>
 <!-- End Google Tag Manager -->
-<link rel="canonical" href="https://point26cap.com/contact">
-<meta property="og:url" content="https://point26cap.com/contact">
+<!-- noindex is load-bearing here, not decorative: a post-conversion destination has no
+     organic value. Deliberately NOT paired with a robots.txt Disallow — Disallow blocks
+     crawling, which would stop Google ever reading this tag, so the two undercut each other. -->
+<meta name="robots" content="noindex, nofollow">
+<!-- Title and description sit in the real head rather than in <helmet> like the other five
+     pages, for two reasons: <helmet> cannot interpolate, and it is injected after boot — so
+     GTM's initial pageview fires while document.title is still empty. This is the page
+     marketing builds conversion reporting on, so it gets a real title from the first byte.
+     No canonical and no og tags: a canonical on a noindex page leaks a deindex signal onto
+     whatever it points at, and a post-conversion page is never shared. -->
+<title>Thank You | Point26 Capital</title>
+<meta name="description" content="Your message has reached Point26 Capital. We'll be in touch within 24 hours.">
 <link rel="icon" type="image/svg+xml" href="assets/mark-dark.svg">
 <link rel="apple-touch-icon" href="assets/mark-dark.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="./support.js"></script>
 <script src="./recaptcha.js"></script>
 <script src="./attribution.js"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","name":"Contact Point26 Capital","url":"https://point26cap.com/contact","description":"Call 954-743-0407, email info@point26cap.com, or visit 96-14 Metropolitan Ave, Forest Hills, NY 11375. Response within 24 hours.","mainEntity":{"@id":"https://point26cap.com/#org"}},{"@type":"FinancialService","@id":"https://point26cap.com/#org","name":"Point26 Capital","url":"https://point26cap.com","telephone":"+1-954-743-0407","email":"info@point26cap.com","address":{"@type":"PostalAddress","streetAddress":"96-14 Metropolitan Ave","addressLocality":"Forest Hills","addressRegion":"NY","postalCode":"11375","addressCountry":"US"},"areaServed":{"@type":"Country","name":"United States"},"description":"Revenue-based business funding from $250K to $10MM. Approvals in hours, same-day funding, no hard credit pulls.","slogan":"Fast. Fair. Funded.","contactPoint":{"@type":"ContactPoint","telephone":"+1-954-743-0407","email":"info@point26cap.com","contactType":"sales","areaServed":"US","availableLanguage":"English"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://point26cap.com/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://point26cap.com/contact"}]}]}</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -30,14 +41,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
-<title>Contact Us | Point26 Capital</title>
-<meta name="description" content="Talk to Point26 Capital: 954-743-0407, info@point26cap.com, 96-14 Metropolitan Ave, Forest Hills, NY 11375. Response in 24 hours.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Contact Point26 Capital">
-<meta property="og:description" content="Approval, funding, and terms you can trust. Response in 24 hours.">
-<meta property="og:image" content="https://point26cap.com/assets/team-chanan.png">
-<meta name="twitter:image" content="https://point26cap.com/assets/team-chanan.png">
-<meta name="twitter:card" content="summary_large_image">
 <style>
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -48,8 +51,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   input,textarea,select{font-family:inherit;color:#fff;background:transparent;border:0;outline:none;}
   input::placeholder,textarea::placeholder{color:rgba(255,255,255,.48);}
   @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-  @media (max-width:1240px){
-  }
   @media (max-width: 700px){
     [data-nav]{ left:0 !important; right:0 !important; width:100% !important; transform:none !important; top:0 !important; gap:0 !important; padding:30px 18px 0 !important; box-sizing:border-box !important; justify-content:space-between !important; align-items:flex-start !important; }
     [data-nav] > a:first-child{ padding:13px 16px !important; }
@@ -63,11 +64,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .menu-open [data-nav-burger] > span > span:nth-child(2){ opacity:0 !important; }
     .menu-open [data-nav-burger] > span > span:nth-child(3){ transform:translateY(-5.7px) rotate(-45deg) !important; }
     .menu-open [data-logo-word]{ width:0 !important; opacity:0 !important; overflow:hidden !important; }
-
     [data-page]{ padding-left:20px !important; padding-right:20px !important; }
-    [data-field-row]{ flex-direction:column !important; gap:34px !important; }
-    [data-sec-title]{ font-size:28px !important; line-height:36px !important; }
-    [data-reach-row]{ flex-direction:column !important; gap:8px !important; }
     /* footer: collapse sticky banner-rise into a simple stacked footer (same as Home) */
     #footer{ padding-top:0 !important; }
     [data-foot-track]{ height:auto !important; }
@@ -83,13 +80,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     [data-foot-blend]{ height:1px !important; }
     [data-fund-blend]{ height:112px !important; }
     [data-foot-links]{ flex-direction:column !important; justify-content:center !important; gap:22px !important; padding:30px 24px 38px !important; }
-    [data-chip-row]{ gap:10px !important; }
-    [data-chip-row] span{ font-size:14px !important; padding:8px 14px !important; line-height:1.35 !important; }
-    [data-greet-head]{ font-size:32px !important; line-height:40px !important; }
-    [data-greet-box]{ min-height:420px !important; padding:52px 22px !important; border-radius:18px !important; gap:28px !important; }
-    [data-greet]{ font-size:22px !important; line-height:30px !important; }
-    [data-intents]{ flex-direction:column !important; align-items:center !important; gap:12px !important; }
-    [data-intents] a{ font-size:15px !important; padding:12px 20px !important; min-width:0 !important; width:100% !important; max-width:280px !important; }
+    [data-thanks-head]{ font-size:32px !important; line-height:40px !important; }
+    [data-thanks-box]{ min-height:0 !important; padding:52px 22px !important; border-radius:18px !important; gap:28px !important; }
+    [data-next]{ flex-direction:column !important; align-items:center !important; gap:12px !important; }
+    [data-next] a{ font-size:15px !important; padding:12px 20px !important; min-width:0 !important; width:100% !important; max-width:280px !important; }
   }
   @media (max-width:1100px){
     #footer{ padding-top:0 !important; }
@@ -152,99 +146,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="/contact" style="position:relative;z-index:1;display:block;width:100%;max-width:354px;text-align:center;padding:10px 0;color:#fff;font-size:22px;font-weight:300;text-transform:capitalize;text-decoration:none;-webkit-tap-highlight-color:rgba(1,196,207,.25);">Contact Us</a>
   </div>
 
-  <!-- ===================== GREETING / INTENT ===================== -->
-  <section data-screen-label="Greeting" style="position:relative;padding:170px 0 130px;">
+  <!-- ===================== CONFIRMATION ===================== -->
+  <section data-screen-label="Confirmation" style="position:relative;padding:170px 0 110px;">
     <div style="position:absolute;left:5%;right:5%;top:30%;height:640px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(1,196,207,.34), rgba(1,196,207,.1) 58%, transparent 80%);filter:blur(150px);pointer-events:none;z-index:0;"></div>
     <div data-page="" style="position:relative;z-index:1;width:100%;max-width:1728px;margin:0 auto;padding:0 40px;">
-      <h1 data-greet-head="" style="margin:0;max-width:1180px;font-size:72px;line-height:80px;font-weight:400;letter-spacing:-.02em;color:#fff;text-wrap:pretty;">Approval, funding, and terms you can trust. Capital that moves as fast as your business.<br>Response in <span style="color:rgba(255,255,255,.42);">24 hours</span>.</h1>
-
-      <div data-greet-box="" style="margin-top:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:38px;min-height:620px;padding:80px 40px;border-radius:24px;background:linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(152,221,255,0) 100%), rgba(255,255,255,.03);box-shadow:inset 0 3px 3px rgba(255,255,255,.12), inset 0 108px 132px rgba(1,196,207,.10);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);transition:min-height .5s cubic-bezier(.16,1,.3,1);">
-
-        <sc-if value="{{ showIntro }}" hint-placeholder-val="{{ true }}">
-          <p data-greet="" style="margin:0;max-width:760px;text-align:center;font-size:34px;line-height:44px;font-weight:400;letter-spacing:-.01em;color:#fff;text-wrap:balance;animation:fadeUp .5s cubic-bezier(.16,1,.3,1) both;">Hey there! How can we assist you on this {{ partOfDay }} in <span style="color:rgba(255,255,255,.42);">{{ place }}</span>?</p>
-          <div data-intents="" style="width:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:22px;margin-top:8px;animation:fadeUp .55s cubic-bezier(.16,1,.3,1) .08s both;">
-            <a href="#" onClick="{{ pickProject }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:210px;padding:13px 26px;border-radius:60px;background:rgba(0,50,56,.86);border:0.5px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:16px;font-weight:300;text-transform:capitalize;transition:border-color .25s ease,background .25s ease;" style-hover="background:#003238;border-color:#00F1FF;">Start an application</a>
-            <a href="#" onClick="{{ pickPartner }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:210px;padding:13px 26px;border-radius:60px;background:rgba(0,50,56,.86);border:0.5px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:16px;font-weight:300;text-transform:capitalize;transition:border-color .25s ease,background .25s ease;" style-hover="background:#003238;border-color:#00F1FF;">Become an ISO partner</a>
-            <a href="#" onClick="{{ pickHi }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:210px;padding:13px 26px;border-radius:60px;background:rgba(0,50,56,.86);border:0.5px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:16px;font-weight:300;text-transform:capitalize;transition:border-color .25s ease,background .25s ease;" style-hover="background:#003238;border-color:#00F1FF;">Say hi</a>
-          </div>
-        </sc-if>
-
-        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ false }}">
-          <div data-inbox-form="" style="width:100%;max-width:780px;display:flex;flex-direction:column;">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;animation:fadeUp .45s cubic-bezier(.16,1,.3,1) both;">
-              <h3 style="margin:0;font-size:34px;line-height:44px;font-weight:400;letter-spacing:-.01em;color:#fff;">{{ formTitle }}</h3>
-              <a href="#" onClick="{{ reset }}" style="flex:none;color:rgba(255,255,255,.5);text-decoration:none;font-size:15px;font-weight:300;text-transform:capitalize;" style-hover="color:#00F1FF;">← back</a>
-            </div>
-            <p style="margin:10px 0 0;font-size:16px;line-height:150%;font-weight:300;color:rgba(255,255,255,.55);animation:fadeUp .45s cubic-bezier(.16,1,.3,1) .05s both;">{{ formSub }}</p>
-
-            <div ref="{{ formRef }}" style="margin-top:46px;display:flex;flex-direction:column;gap:38px;">
-              <sc-for list="{{ fields }}" as="f" hint-placeholder-count="3">
-                <input type="{{ f.type }}" name="{{ f.key }}" data-req="{{ f.req }}" placeholder="{{ f.label }}" style="width:100%;font-size:18.8px;line-height:150%;font-weight:300;padding:0 0 9.4px;border-bottom:0.94px solid rgba(255,255,255,.85);animation:fadeUp .5s cubic-bezier(.16,1,.3,1) {{ f.delay }} both;">
-              </sc-for>
-              <textarea data-inbox-msg="" name="message" data-req="1" placeholder="{{ msgLabel }}" rows="2" style="width:100%;font-size:18.8px;line-height:150%;font-weight:300;padding:0 0 9.4px;border-bottom:0.94px solid rgba(255,255,255,.85);resize:none;animation:fadeUp .5s cubic-bezier(.16,1,.3,1) {{ msgDelay }} both;"></textarea>
-            </div>
-
-            <div style="margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:22px;animation:fadeUp .5s cubic-bezier(.16,1,.3,1) {{ ctaDelay }} both;">
-              <input name="bot-field" data-bot-field="contact" type="text" tabIndex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
-              <div data-recaptcha="contact" data-recaptcha-theme="dark"></div>
-              <p style="margin:0;font-size:15px;font-weight:300;color:#ff8f85;{{ errStyle }}">{{ errMsg }}</p>
-              <a href="#" onClick="{{ submit }}" style="display:inline-flex;align-items:center;gap:13.16px;padding:11.96px 17.94px 11.96px 11.96px;border:0.6px solid #FDFDFD;border-radius:40.67px;text-decoration:none;" style-hover="background:rgba(255,255,255,.08);">
-                <span style="display:flex;align-items:center;justify-content:center;width:40.67px;height:23.92px;border:0.48px solid #00F1FF;border-radius:14.52px;color:#00F1FF;font-size:14px;line-height:1;">→</span>
-                <span style="font-size:18px;line-height:150%;font-weight:300;text-transform:capitalize;color:#fff;">Submit</span>
-              </a>
-              <p style="margin:0;max-width:602px;font-size:14px;line-height:150%;font-weight:300;text-align:center;text-transform:capitalize;color:#fff;opacity:.73;">By submitting, you consent to point26 capital contacting you. You can opt out anytime. Visit Privacy Policy for more information.</p>
-            </div>
-          </div>
-        </sc-if>
-
-        <sc-if value="{{ showThanks }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;flex-direction:column;align-items:center;gap:20px;animation:fadeUp .55s cubic-bezier(.16,1,.3,1) both;">
-            <div style="width:96px;height:96px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(0,241,255,.9), rgba(1,142,150,.5) 62%, transparent 100%);"></div>
-            <p style="margin:0;max-width:620px;text-align:center;font-size:34px;line-height:44px;font-weight:400;letter-spacing:-.01em;color:#fff;">Thank you — we'll be in touch within 24 hours.</p>
-            <a href="#" onClick="{{ reset }}" style="color:rgba(255,255,255,.55);text-decoration:none;font-size:15px;font-weight:300;text-transform:capitalize;" style-hover="color:#00F1FF;">Send another message</a>
-          </div>
-        </sc-if>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== WHY + REACH ===================== -->
-  <section data-screen-label="Why" style="position:relative;padding:40px 0 140px;">
-    <div style="position:absolute;left:5%;right:5%;top:0;height:640px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(1,196,207,.34), rgba(1,196,207,.1) 58%, transparent 80%);filter:blur(150px);pointer-events:none;z-index:0;"></div>
-    <div data-page="" style="position:relative;z-index:1;width:100%;max-width:1728px;margin:0 auto;padding:0 40px;">
-
-      <h2 data-sec-title="" style="margin:0;font-size:40px;line-height:50px;font-weight:400;text-transform:capitalize;color:#fff;">Why businesses work with us</h2>
-      <div style="margin-top:22px;display:flex;flex-direction:column;gap:18px;max-width:1000px;">
-        <div data-chip-row="" style="display:flex;flex-wrap:wrap;gap:18px;">
-          <span style="display:inline-flex;align-items:center;padding:7px 11px 7px 10px;border:0.3px solid #ffffff;border-radius:60px;background:rgba(0,0,0,.22);font-size:16px;line-height:150%;font-weight:300;text-transform:capitalize;color:#fff;">$250K-$10MM revenue-based financing</span>
-          <span style="display:inline-flex;align-items:center;padding:7px 11px 7px 10px;border:0.3px solid #ffffff;border-radius:60px;background:rgba(0,0,0,.45);font-size:16px;line-height:150%;font-weight:300;text-transform:capitalize;color:#fff;">No hard credit pulls</span>
-          <span style="display:inline-flex;align-items:center;padding:7px 11px 7px 10px;border:0.3px solid #ffffff;border-radius:60px;background:rgba(0,0,0,.45);font-size:16px;line-height:150%;font-weight:300;text-transform:capitalize;color:#fff;">24 hour response time</span>
-        </div>
-        <div data-chip-row="" style="display:flex;flex-wrap:wrap;gap:18px;">
-          <span style="display:inline-flex;align-items:center;padding:7px 11px 7px 10px;border:0.3px solid #ffffff;border-radius:60px;background:rgba(0,0,0,.22);font-size:16px;line-height:150%;font-weight:300;text-transform:capitalize;color:#fff;">Clear and transparent terms</span>
-          <span style="display:inline-flex;align-items:center;padding:7px 11px 7px 10px;border:0.3px solid #00F1FF;border-radius:60px;background:rgba(0,0,0,.22);font-size:16px;line-height:150%;font-weight:500;font-style:italic;text-transform:capitalize;color:#fff;">Built with integrity</span>
+      <div data-thanks-box="" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:96px 40px;border-radius:24px;background:linear-gradient(180deg, rgba(255,255,255,.06) 0%, rgba(152,221,255,0) 100%), rgba(255,255,255,.03);box-shadow:inset 0 3px 3px rgba(255,255,255,.12), inset 0 108px 132px rgba(1,196,207,.10);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">
+        <div style="width:96px;height:96px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(0,241,255,.9), rgba(1,142,150,.5) 62%, transparent 100%);animation:fadeUp .5s cubic-bezier(.16,1,.3,1) both;"></div>
+        <h1 data-thanks-head="" style="margin:0;max-width:620px;text-align:center;font-size:34px;line-height:44px;font-weight:400;letter-spacing:-.01em;color:#fff;animation:fadeUp .5s cubic-bezier(.16,1,.3,1) .08s both;">{{ headline }}</h1>
+        <p style="margin:0;max-width:620px;text-align:center;font-size:16px;line-height:150%;font-weight:300;color:rgba(255,255,255,.55);animation:fadeUp .5s cubic-bezier(.16,1,.3,1) .16s both;">{{ body }}</p>
+        <div data-next="" style="width:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:22px;margin-top:14px;">
+          <sc-for list="{{ links }}" as="l" hint-placeholder-count="3">
+            <a href="{{ l.href }}" style="display:inline-flex;align-items:center;justify-content:center;min-width:210px;padding:13px 26px;border-radius:60px;background:rgba(0,50,56,.86);border:0.5px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:16px;font-weight:300;text-transform:capitalize;transition:border-color .25s ease,background .25s ease;animation:fadeUp .55s cubic-bezier(.16,1,.3,1) {{ l.delay }} both;{{ l.tint }}" style-hover="background:#003238;border-color:#00F1FF;">{{ l.label }}</a>
+          </sc-for>
         </div>
       </div>
-
-      <h2 data-sec-title="" style="margin:118px 0 0;font-size:40px;line-height:50px;font-weight:400;text-transform:capitalize;color:#fff;">Reach us directly</h2>
-      <div style="margin-top:32px;display:flex;flex-direction:column;gap:47px;max-width:520px;">
-        <div data-reach-row="" style="display:flex;align-items:flex-start;gap:24px;">
-          <span style="flex:none;width:257px;font-size:16px;line-height:20px;font-weight:200;text-transform:capitalize;color:#fff;">Talk to us</span>
-          <div style="display:flex;flex-direction:column;">
-            <a href="tel:+19547430407" style="font-size:16px;line-height:150%;font-weight:300;color:#fff;opacity:.64;text-decoration:none;" style-hover="opacity:1;">954-743-0407</a>
-            <a href="mailto:info@point26cap.com" style="font-size:16px;line-height:150%;font-weight:300;color:#fff;opacity:.64;text-decoration:none;" style-hover="opacity:1;">info@point26cap.com</a>
-          </div>
-        </div>
-        <div data-reach-row="" style="display:flex;align-items:flex-start;gap:24px;">
-          <span style="flex:none;width:257px;font-size:16px;line-height:20px;font-weight:200;text-transform:capitalize;color:#fff;">Headquarters</span>
-          <div style="display:flex;flex-direction:column;gap:31px;">
-            <span style="max-width:210px;font-size:16px;line-height:150%;font-weight:300;color:#fff;opacity:.64;">96-14 Metropolitan Ave, Forest Hills, NY 11375</span>
-            <span style="max-width:170px;font-size:16px;line-height:150%;font-weight:300;text-transform:capitalize;color:#fff;opacity:.64;">Monday - Friday 09:00 am - 06:00 pm</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -307,112 +222,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { partOfDay: "day", place: "your area", intent: null, sent: false, err: false, subscribed: false, subErr: false };
+  // Read in the field initialiser, not componentDidMount: renderVals() runs inside render(),
+  // so a setState later would paint the generic copy for one frame before swapping.
+  state = { form: this.readForm(), subscribed: false, subErr: false };
 
-  static INTENTS = {
-    project: {
-      title: "Let's get started.",
-      sub: "Most applications get a decision within 24 hours.",
-      msg: "Message*",
-      fields: [
-        { label: "Full name*", type: "text", req: "1", key: "name" },
-        { label: "Email*", type: "email", req: "1", key: "email" },
-        { label: "Phone*", type: "tel", req: "1", key: "phone" },
-        { label: "Company name", type: "text", req: "", key: "company" },
-        { label: "Company type", type: "text", req: "", key: "companyType" },
-        { label: "Address of company", type: "text", req: "", key: "address" },
+  static VARIANTS = {
+    // Keys are the Netlify form names from netlify-forms.html, so the URL param, the
+    // form_name on the dataLayer event and the Netlify dashboard all agree with each other.
+    contact: {
+      title: "Thank you — your request is in.",
+      body: "A member of our funding team will review it and be in touch within 24 hours. Most applications get a decision in the same window.",
+      links: [
+        { label: "See how it works", href: "/how-it-works" },
+        { label: "Meet the team", href: "/about" },
+        { label: "Back to home", href: "/" },
       ],
     },
-    partner: {
-      title: "Let's partner up.",
-      sub: "We review and approve qualified ISO partners within 24-48 hours.",
-      msg: "Message*",
-      fields: [
-        { label: "Full name*", type: "text", req: "1", key: "name" },
-        { label: "Email*", type: "email", req: "1", key: "email" },
-        { label: "Phone*", type: "tel", req: "1", key: "phone" },
-        { label: "Company name*", type: "text", req: "1", key: "company" },
-        { label: "Company type (ISO, broker, agency)", type: "text", req: "", key: "companyType" },
-      ],
-    },
-    hi: {
-      title: "Say hi.",
-      sub: "Questions, feedback, or just want to talk? We read everything.",
-      msg: "Message*",
-      fields: [
-        { label: "Full name*", type: "text", req: "1", key: "name" },
-        { label: "Email*", type: "email", req: "1", key: "email" },
-        { label: "Phone", type: "tel", req: "", key: "phone" },
+    "iso-application": {
+      title: "Thank you — your application is in.",
+      body: "We review and approve qualified ISO partners within 24-48 hours. We'll email you as soon as yours has been looked at.",
+      links: [
+        { label: "Explore ISO resources", href: "/iso-resources" },
+        { label: "See how it works", href: "/how-it-works" },
+        { label: "Back to home", href: "/" },
       ],
     },
   };
 
-  static get FORM() {
-    return Component.INTENTS.project;
-  }
+  // Serves two people at once: someone whose ?form= went missing, and someone on the bare URL
+  // who submitted nothing. Neither is told anything untrue. Deliberately outside VARIANTS so
+  // there is no odd ?form=generic behaviour.
+  static GENERIC = {
+    title: "Thank you — we'll be in touch.",
+    body: "If you've just sent us something, we have it — expect a reply within 24 hours. If you were after something else, the links below will get you there.",
+    links: [
+      { label: "Talk to us", href: "/contact" },
+      { label: "See how it works", href: "/how-it-works" },
+      { label: "Back to home", href: "/" },
+    ],
+  };
 
-  validateAndSend() {
-    const root = this._formEl;
-    if (!root) { this.setState({ sent: true, err: false }); return; }
-    const ctrls = Array.prototype.slice.call(root.querySelectorAll("input,textarea"));
-    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    let bad = null;
-    for (let i = 0; i < ctrls.length; i++) {
-      const c = ctrls[i];
-      const v = (c.value || "").trim();
-      const req = c.getAttribute("data-req");
-      if (req && !v) { bad = c; break; }
-      if (c.type === "email" && v && !emailRe.test(v)) { bad = c; break; }
+  // The param is a lookup key and is never rendered, so ?form=<anything> cannot put text of
+  // someone else's choosing inside our confirmation card on our own domain. hasOwnProperty
+  // rather than a plain lookup: ?form=constructor would otherwise return Object's constructor,
+  // which is truthy but has no .links, and .map would blow up into an error banner.
+  readForm() {
+    try {
+      var f = (new URLSearchParams(location.search).get("form") || "").trim().toLowerCase();
+      return Object.prototype.hasOwnProperty.call(Component.VARIANTS, f) ? f : "";
+    } catch (e) {
+      return ""; // No URLSearchParams: the generic copy is the right answer anyway.
     }
-    if (bad) {
-      bad.style.borderBottomColor = "#ff8f85";
-      if (bad.focus) bad.focus();
-      this.setState({ err: "fields" });
-      return;
-    }
-    ctrls.forEach((c) => { c.style.borderBottomColor = "rgba(255,255,255,.85)"; });
-    const data = { intent: this.state.intent || "project" };
-    ctrls.forEach((c) => { if (c.name) data[c.name] = (c.value || "").trim(); });
-    if (!this.captchaOK("contact")) { this.setState({ err: "captcha" }); return; }
-    this.netlifyPost("contact", data).then((ok) => {
-      this.setState(ok ? { sent: true, err: "" } : { err: "send" });
-    });
   }
 
   componentDidMount() {
-    const h = new Date().getHours();
-    const partOfDay = h < 5 ? "late night" : h < 12 ? "morning" : h < 17 ? "afternoon" : h < 21 ? "evening" : "night";
-    let place = "your area";
-    try {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-      const city = (tz.split("/").pop() || "").replace(/_/g, " ");
-      const lang = navigator.language || "";
-      const region = lang.split("-")[1];
-      let country = "";
-      if (region && Intl.DisplayNames) {
-        country = new Intl.DisplayNames([lang], { type: "region" }).of(region) || "";
-      }
-      if (city) place = country ? city + ", " + country : city;
-    } catch (e) {}
-    this.setState({ partOfDay, place });
     this.bindFooterScroll();
-  }
-
-  pick(intent) {
-    this.setState({ intent, sent: false });
-    setTimeout(() => {
-      const box = document.querySelector("[data-greet-box]");
-      if (box) {
-        const t = window.scrollY + box.getBoundingClientRect().top - 110;
-        window.scrollTo({ top: t, behavior: "smooth" });
-      }
-    }, 60);
   }
 
   componentWillUnmount() {
     if (this._onScroll) window.removeEventListener("scroll", this._onScroll);
   }
-
   bindFooterScroll() {
     if (this._onScroll) return;
     this._onScroll = () => {
@@ -427,7 +296,6 @@ class Component extends DCLogic {
     };
     window.addEventListener("scroll", this._onScroll, { passive: true });
   }
-
   toggleMenu(e) {
     if (e && e.preventDefault) e.preventDefault();
     const m = document.querySelector("[data-navmenu]");
@@ -545,14 +413,19 @@ class Component extends DCLogic {
         .catch(() => false);
     } catch (e) { return Promise.resolve(false); }
   }
-
   renderVals() {
-    const cfg = this.state.intent ? (Component.INTENTS[this.state.intent] || Component.INTENTS.project) : null;
+    const cfg = Component.VARIANTS[this.state.form] || Component.GENERIC;
     return {
       toggleMenu: this.toggleMenu.bind(this),
-      formRef: (el) => { this._formEl = el; },
-      errStyle: this.state.err ? "opacity:1;" : "opacity:0;",
-      errMsg: this.state.err === "captcha" ? "Please confirm you're not a robot." : this.state.err === "send" ? "Something went wrong sending this — please refresh the page and try again." : "Please complete the required fields (marked *).",
+      headline: cfg.title,
+      body: cfg.body,
+      links: cfg.links.map((l, idx) => ({
+        ...l,
+        // First link is the recommended next step, so it gets the filled treatment; the rest
+        // keep the outline pill from the contact page's intent buttons.
+        tint: idx === 0 ? "background:#003238;border-color:#00F1FF;" : "",
+        delay: (idx * 80 + 240) + "ms",
+      })),
       formShow: this.state.subscribed ? "display:none;" : "",
       thanksShow: this.state.subscribed ? "" : "display:none;",
       subErrStyle: this.state.subErr && !this.state.subscribed ? "opacity:1;" : "opacity:0;",
@@ -567,23 +440,6 @@ class Component extends DCLogic {
           this.setState(ok ? { subErr: "", subscribed: true } : { subErr: "send" });
         });
       },
-      partOfDay: this.state.partOfDay,
-      place: this.state.place,
-      showIntro: !this.state.intent && !this.state.sent,
-      showForm: !!this.state.intent && !this.state.sent,
-      showThanks: this.state.sent,
-      formTitle: cfg ? cfg.title : "",
-      formSub: cfg ? cfg.sub : "",
-      msgLabel: cfg ? cfg.msg : "",
-      fields: cfg ? cfg.fields.map((f, i) => ({ ...f, delay: (i * 90) + "ms" })) : [],      msgDelay: cfg ? (cfg.fields.length * 90) + "ms" : "0ms",
-      ctaDelay: cfg ? ((cfg.fields.length + 1) * 90) + "ms" : "0ms",
-      pickProject: (e) => { if (e && e.preventDefault) e.preventDefault(); this.pick("project"); },
-      pickPartner: (e) => { if (e && e.preventDefault) e.preventDefault(); this.pick("partner"); },
-      pickHi: (e) => { if (e && e.preventDefault) e.preventDefault(); this.pick("hi"); },
-      reset: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ intent: null, sent: false, err: "" }); },
-      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.validateAndSend(); },
-      onSubscribe: (e) => { if (e && e.preventDefault) e.preventDefault(); },
-
       ...(() => {
         const footEl = (typeof document !== "undefined") ? document.getElementById("footer") : null;
         const empty = { emailFade: "", subFade: "", bannerOuter: "", bannerInner: "" };
@@ -602,7 +458,6 @@ class Component extends DCLogic {
           bannerInner: `border-radius:${(34 * (1 - e)).toFixed(0)}px;height:calc(${(1 - e).toFixed(3)} * min(46vw, 620px, 52vh) + ${e.toFixed(3)} * 100vh);max-height:none;`,
         };
       })(),
-
       videoRef: (el) => {
         if (!el || this._vinit) return;
         const list = ["uploads/Untitled%20Project%203.mp4"];

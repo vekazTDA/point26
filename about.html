@@ -359,8 +359,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="assets/word-white.svg" alt="Point26" style="height:104px;display:block;">
     </div>
     <div data-foot-links="1" style="max-width:1440px;margin:0 auto;border-top:1px solid rgba(255,255,255,.14);padding:26px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;color:#fff;font-size:15px;font-weight:300;">
-      <span title="Coming soon" style="color:#fff;opacity:.5;cursor:default;">Privacy Policy</span>
-      <span title="Coming soon" style="color:#fff;opacity:.5;cursor:default;">Terms &amp; Conditions</span>
+      <a href="/privacy" style="color:#fff;opacity:.85;text-decoration:none;" style-hover="opacity:1;">Privacy Policy</a>
+      <a href="/terms" style="color:#fff;opacity:.85;text-decoration:none;" style-hover="opacity:1;">Terms &amp; Conditions</a>
       <span style="opacity:.85;">Designed With ♥ By DA</span>
     </div>
   </section>
@@ -639,8 +639,9 @@ class Component extends DCLogic {
   }
 
   // Netlify Forms: the live forms are JS-rendered, so they post directly to the static
-  // definitions in netlify-forms.html. Fails silently off-Netlify (local preview) so the
-  // on-screen confirmation still works.
+  // definitions in netlify-forms.html. Off-Netlify (local preview) the POST fails and
+  // netlifyPost reports that as a failure, so the pages show their send error rather than a
+  // confirmation — the success path can only be exercised on a real deploy.
   // reCAPTCHA gate. Netlify verifies the token server-side, but it can only reject after the
   // fact and this UI confirms optimistically, so an unticked or expired box has to be caught
   // here or the submission is lost behind a "thank you". Empty also covers "the widget never
@@ -650,28 +651,75 @@ class Component extends DCLogic {
     return !!(rc && rc.token(formName));
   }
   // Tells Google Tag Manager a lead just landed, so GA4 and Ads can credit the campaign
-  // that produced it. Called only from netlifyPost's success branch: these forms confirm in
-  // place instead of redirecting, so there is no thank-you URL for a pageview trigger to
-  // catch, and firing on button click would count spam and reCAPTCHA rejections as
-  // conversions.
+  // that produced it. Called only from netlifyPost's success branch: firing on button click
+  // would count spam and reCAPTCHA rejections as conversions.
   //
   // Deliberately carries no name, email or phone. Sending personal data to Google Analytics
   // breaks their terms and can get the property suspended, and the attribution fields
   // already identify the campaign, which is the whole point of the event.
-  pushLeadEvent(formName, attr) {
+  //
+  // This is the only place generate_lead is pushed, for every form, redirecting or not. The
+  // thank-you page must never push it as well: a page can be reloaded, bookmarked and
+  // shared, so every contact and ISO lead would be counted twice or more.
+  //
+  // done() is for a caller that is about to navigate. GTM runs eventCallback once the tags
+  // listening for this event have fired, so the beacon is away before the page goes, and
+  // eventTimeout caps that wait inside GTM. The local timer caps it out here too, because
+  // eventCallback never runs at all when an ad blocker ate the container — and a lead must
+  // not be stranded on a spent form to protect an analytics hit. No delay when GTM is
+  // plainly absent, so those visitors don't sit through a timeout for nothing.
+  pushLeadEvent(formName, attr, done) {
+    let fired = false;
+    // Always on a fresh task, never inline: GTM may run eventCallback synchronously inside
+    // push, and at that moment the caller's own .then — the one that paints the in-place
+    // confirmation — has not run yet. That confirmation is the fallback if the navigation
+    // never lands, so it has to be on screen before we leave.
+    const go = () => { if (fired) return; fired = true; if (done) setTimeout(done, 0); };
+    if (done) setTimeout(go, window.google_tag_manager ? 1200 : 0);
     try {
       window.dataLayer = window.dataLayer || [];
       // attr first so our own keys always win if attribution ever grows a clashing field.
-      window.dataLayer.push(Object.assign({}, attr, {
+      const ev = Object.assign({}, attr, {
         event: "generate_lead",
         form_name: formName,
         // Newsletter signups fire the same event so none are missed, but are labelled so GTM
         // can count them separately — they are not sales enquiries.
         lead_type: formName === "newsletter" ? "newsletter" : "sales_lead",
-      }));
+      });
+      // GTM reserved keys, not data. Only set when someone is waiting, so the newsletter's
+      // push stays byte for byte what it has always been.
+      if (done) { ev.eventCallback = go; ev.eventTimeout = 1000; }
+      window.dataLayer.push(ev);
     } catch (e) {
-      // Analytics must never break a submission that has already succeeded.
+      // Analytics must never break a submission that has already succeeded — including
+      // holding up the redirect it was supposed to be waiting for.
+      go();
     }
+  }
+  // Where a form sends the visitor once Netlify has accepted the submission: a real URL, so
+  // GA4, Ads and the pixels that can only trigger on a page path have a destination pageview
+  // to fire on instead of only a dataLayer event.
+  //
+  // Empty for the newsletter, deliberately. It sits in the footer of every page, so pulling
+  // a mid-scroll reader onto another page for an email signup is a regression, not a
+  // conversion path; it keeps its in-place confirmation. Only the two terminal forms
+  // redirect.
+  //
+  // form= carries the form name out of this whitelist and nothing else. Nothing identifying
+  // may ever ride in a URL: query strings reach GA4, Google Ads, the Referer header of every
+  // third-party asset the next page loads, the browser history, and Netlify's access logs.
+  thanksUrl(formName) {
+    return formName === "contact" || formName === "iso-application" ? "/thank-you?form=" + formName : "";
+  }
+  // replace(), not assign(): Back should return the visitor to whatever they were reading
+  // before the form, not to the form they just submitted. Nothing persists the sent state,
+  // so a form page reached through Back re-renders empty — which reads as "my submission
+  // vanished" and invites a second one.
+  //
+  // Throws inside a sandboxed frame with no top-navigation permission. Swallow it: the
+  // in-place confirmation is already on screen, so the visitor sees a thank-you either way.
+  goThanks(url) {
+    try { window.location.replace(url); } catch (e) {}
   }
   netlifyPost(formName, data) {
     // Attached centrally so every caller gets them. These go last so they win over the same
@@ -688,10 +736,16 @@ class Component extends DCLogic {
     // that fails reCAPTCHA — including a page running pre-reCAPTCHA cached code — and the
     // old fire-and-forget version showed a thank-you regardless, so a rejected lead
     // vanished with nobody any the wiser.
+    //
+    // The redirect hangs off that same success branch, so it can only ever follow a
+    // submission Netlify took. The callers' failure paths, and contact.html's
+    // no-form-element early-out, navigate nowhere and so cannot mint a thank-you pageview
+    // for a lead that never existed.
+    const to = this.thanksUrl(formName);
     try {
       return fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
         .then((res) => !!res && res.ok)
-        .then((ok) => { if (ok) this.pushLeadEvent(formName, attr); return ok; })
+        .then((ok) => { if (ok) this.pushLeadEvent(formName, attr, to ? () => this.goThanks(to) : null); return ok; })
         .catch(() => false);
     } catch (e) { return Promise.resolve(false); }
   }
